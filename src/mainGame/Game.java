@@ -27,6 +27,8 @@ Alexandra Martin, and Christina Popik
  
  */
 
+//Mike Woo Sucks
+
 public class Game extends Canvas implements Runnable {
 
 	// using the imported tool api, Java automatically gets screen width and
