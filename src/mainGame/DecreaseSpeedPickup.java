@@ -9,19 +9,19 @@ import java.net.URL;
  * 
  * @author Kyle Horton
  * 
- * Pickup that decreases the players speed.
+ * Pickup that briefly decreases the speed of the player.
  *
  */
-public class NFLSpeed extends Pickup{
+public class DecreaseSpeedPickup extends Pickup{
 	
 	private Handler handler;
 
-	public NFLSpeed(ID id, Handler handler) {
+	public DecreaseSpeedPickup(ID id, Handler handler) {
 		super((Game.WIDTH - 70)*Math.random(), (Game.HEIGHT - 120)*Math.random(), id);
 		this.handler = handler;
 		velX = Math.random()*10;
 		velY = Math.random()*10;
-		img = getImage("images/NFLImage.png");
+		img = getImage("images/SeaShell.png");
 	}
 
 

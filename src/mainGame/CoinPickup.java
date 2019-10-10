@@ -12,19 +12,19 @@ import java.net.URL;
  * Class that makes the emails in the Hillary boss. Acts the same as the pickups.
  *
  */
-public class HillaryEmail extends Pickup {
+public class CoinPickup extends Pickup {
 
 	private Handler handler;
 	private int timer;
 
-	public HillaryEmail(ID id, Handler handler) {
+	public CoinPickup(ID id, Handler handler) {
 		super((Game.WIDTH - 40) * Math.random(), -40, id);
 
 		this.handler = handler;
 		this.timer = 10;
 		velX = 0;
 		velY = 5;
-		img = getImage("images/EmailImage.png");
+		img = getImage("images/CoinPickup.png");
 
 	}
 

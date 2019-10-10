@@ -10,19 +10,19 @@ import java.net.URL;
  * 
  * @author Kyle Horton
  * 
- * Pickup that adds a speed increase to the player.
+ * Pickup that briefly increases the speed of the player.
  *
  */
-public class TwitterSpeed extends Pickup{
+public class IncreaseSpeedPickup extends Pickup{
 	
 	private Handler handler;
 
-	public TwitterSpeed(ID id, Handler handler) {
+	public IncreaseSpeedPickup(ID id, Handler handler) {
 		super((Game.WIDTH - 70) * Math.random(), (Game.HEIGHT - 100) * Math.random(), id);
 		this.handler = handler;
 		velX = Math.random()*10;
 		velY = Math.random()*10;
-		img = getImage("images/TwitterImage.png");
+		img = getImage("images/BoltImage.png");
 	}
 
 

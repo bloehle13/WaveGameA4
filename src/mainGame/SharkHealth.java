@@ -12,19 +12,19 @@ import javax.swing.ImageIcon;
  * 
  * @author Kyle Horton
  * 
- * Pickup that adds a health boost to player.
+ * Pickup that briefly increases the speed of the player.
  *
  */
-public class PutinHealth extends Pickup{
+public class SharkHealth extends Pickup{
 	
 	private Handler handler;
 
-	public PutinHealth(ID id, Handler handler) {
+	public SharkHealth(ID id, Handler handler) {
 		super((Game.WIDTH - 70)*Math.random(), (Game.HEIGHT - 120)*Math.random(), id);
 		this.handler = handler;
 		velX = Math.random()*10;
 		velY = Math.random()*10;
-		img = getImage("images/shark.png");
+		img = getImage("images/Shark.png");
 	}
 
 

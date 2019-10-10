@@ -13,16 +13,16 @@ import java.net.URL;
  * Pickup that decreases player's health.
  *
  */
-public class EminemHealth extends Pickup{
+public class DecreaseHealthPickup extends Pickup{
 	
 	private Handler handler;
 
-	public EminemHealth(ID id, Handler handler) {
+	public DecreaseHealthPickup(ID id, Handler handler) {
 		super((Game.WIDTH - 100)*Math.random(), (Game.HEIGHT - 120)*Math.random(), id);
 		this.handler = handler;
 		velX = Math.random()*10;
 		velY = Math.random()*10;
-		img = getImage("images/EminemImage.png");
+		img = getImage("images/SeaUrchin.png");
 	}
 
 
