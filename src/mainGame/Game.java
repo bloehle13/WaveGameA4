@@ -27,8 +27,6 @@ Alexandra Martin, and Christina Popik
  
  */
 
-//Mike Woo Sucks
-
 public class Game extends Canvas implements Runnable {
 
 	// using the imported tool api, Java automatically gets screen width and
@@ -62,8 +60,10 @@ public class Game extends Canvas implements Runnable {
 	public static int TEMP_COUNTER;
 	public String temp;
 	Sound sound = new Sound();
-	
+
+
 	private boolean isPaused = false;
+
 
 	/**
 	 * Used to switch between each of the screens shown to the user
