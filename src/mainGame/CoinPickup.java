@@ -9,7 +9,7 @@ import java.net.URL;
  * 
  * @author Kyle Horton
  * 
- * Class that makes the emails in the Hillary boss. Acts the same as the pickups.
+ * Coin pickup for Seal Boss.
  *
  */
 public class CoinPickup extends Pickup {

@@ -138,6 +138,7 @@ public class Spawn1to5 {
 					tempCounter++;
 					if(hud.health <=5990) {
 						handler.addPickup(new IncreaseHealthPickup(ID.HealthPowerUp, handler));
+						handler.addPickup(new IncreaseSpeedPickup(ID.TwitterSpeed, handler));
 					}
 				}
 				if (game.gameState == STATE.Coop) {
