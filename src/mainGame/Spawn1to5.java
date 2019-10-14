@@ -95,7 +95,7 @@ public class Spawn1to5 {
 				levelTimer = 2000;// 2000 / 60 method calls a second = 33.33 seconds long
 				tempCounter++;// ensures the method is only called once
 				if(hud.health <= 2000) {
-					handler.addPickup(new HealthPowerUp(ID.HealthPowerUp, handler));
+					handler.addPickup(new IncreaseHealthPickup(ID.HealthPowerUp, handler));
 				}
 			}
 			
@@ -137,7 +137,8 @@ public class Spawn1to5 {
 					levelTimer = 2000;
 					tempCounter++;
 					if(hud.health <=5990) {
-						handler.addPickup(new HealthPowerUp(ID.HealthPowerUp, handler));
+						handler.addPickup(new IncreaseHealthPickup(ID.HealthPowerUp, handler));
+						handler.addPickup(new IncreaseSpeedPickup(ID.TwitterSpeed, handler));
 					}
 				}
 				if (game.gameState == STATE.Coop) {
@@ -184,7 +185,7 @@ public class Spawn1to5 {
 					levelTimer = 1500;
 					tempCounter++;
 					if(hud.health <=6550) {
-						handler.addPickup(new HealthPowerUp(ID.HealthPowerUp, handler));
+						handler.addPickup(new IncreaseHealthPickup(ID.HealthPowerUp, handler));
 					}
 				}
 				if (game.gameState == STATE.Coop) {
@@ -219,9 +220,9 @@ public class Spawn1to5 {
 					handler.addObject(new EnemyShooter(r.nextInt(Game.WIDTH) - 35, r.nextInt(Game.HEIGHT) - 75, 100, 100,
 							-20, ID.EnemyShooter, this.handler));
 					if (hud.health <= 50){
-						handler.addPickup(new PutinHealth(ID.PutinHealth, handler));
+						handler.addPickup(new SharkHealth(ID.PutinHealth, handler));
 					} else {
-						handler.addPickup(new EminemHealth(ID.EminemHealth, handler));
+						handler.addPickup(new DecreaseHealthPickup(ID.EminemHealth, handler));
 					}
 
 					levelTimer = 1300;
@@ -257,8 +258,8 @@ public class Spawn1to5 {
 					levelTimer = 1400;
 					tempCounter++;
 					
-					handler.addPickup(new NFLSpeed(ID.NFLSpeed, handler));
-					handler.addPickup(new HealthPowerUp(ID.HealthPowerUp, handler));
+					handler.addPickup(new DecreaseSpeedPickup(ID.NFLSpeed, handler));
+					handler.addPickup(new IncreaseHealthPickup(ID.HealthPowerUp, handler));
 				}
 				if (game.gameState == STATE.Coop) {
 					if (voteTimer == 0) {
@@ -292,7 +293,7 @@ public class Spawn1to5 {
 					handler.addObject(new EnemyBoss(ID.EnemyBoss, handler));
 
 					if (hud.health <= 50){
-						handler.addPickup(new TwitterSpeed(ID.TwitterSpeed, handler));
+						handler.addPickup(new IncreaseSpeedPickup(ID.TwitterSpeed, handler));
 					}
 
 					tempCounter++;

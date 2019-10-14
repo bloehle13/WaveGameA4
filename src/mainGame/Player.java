@@ -54,14 +54,12 @@ public class Player extends GameObject {
 		bulletY = 0;
 		shooting = true;
 		timer = 60;
-//********* CHANGE HERE FOR NEW CHAR 
-		img = getImage("images/TrumpImage.png");
 		voteCount = 0;
-
+//********* CHANGE HERE FOR NEW PLAYER IMAGE
+		
 		if (this.id == ID.Player){
-			img = getImage("images/TrumpImage.png");
-		} else if (this.id == ID.Player2){
-			img = getImage("images/HillaryImage.png");
+	
+			img = getImage("images/PurpleFish.png");
 		}
 
 	}

@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.font.FontRenderContext;
@@ -59,13 +60,24 @@ public class Menu {
 			
 		//List of new potential menu screens
 		//image = new ImageIcon("images/background1.jpg").getImage();
-	    image = new ImageIcon("images/wave.gif").getImage();
-	    image2 = new ImageIcon("images/WaveGameMenu.png").getImage();
-	    //image = new ImageIcon("images/background2.gif").getImage();
+	    image = getImage("images/WaveGameTitle.png")
+;	    //image = new ImageIcon("images/background2.gif").getImage();
 	    
 	    //removed fireworks
 		//handler.addObject(new MenuFireworks((r.nextInt(Game.WIDTH) - 25), 500, 50, 50, 0, -2,
 		//	colorPick.get(r.nextInt(6)), ID.Firework, this.handler));
+	}
+
+	public Image getImage(String path) {
+		Image image = null;
+		try {
+			URL imageURL = Game.class.getResource(path);
+			image = Toolkit.getDefaultToolkit().getImage(imageURL);
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+
+		return image;
 	}
 
 	public void addColors() {
@@ -86,7 +98,7 @@ public class Menu {
 			colorIndex = r.nextInt(6);
 			//Removed fireworks
 			//handler.addObject(new MenuFireworks((r.nextInt(Game.WIDTH) - 25), 1080, 100, 100, 0, -4,
-			//	colorPick.get(colorIndex), ID.Firework, this.handler));
+			//colorPick.get(colorIndex), ID.Firework, this.handler));
 			timer = 300;
 		}
 		handler.tick();
@@ -94,22 +106,22 @@ public class Menu {
 
 	public void render(Graphics g) {
 		if (game.gameState == STATE.Menu) {
-			g.drawImage(image, 0, 0, 1100, 700, null);
+			
 			handler.render(g);
+			
 			Font font = new Font("Roboto", 1, 35);
 			Font font2 = new Font("Roboto", 1, 30);
 			Color color1 = new Color(255, 255, 225);
 			Color color2 = new Color(0, 133, 180);
-			Color color3 = new Color(0, 173, 209);
-
-			g.setFont(font);
-			g.setColor(color2);
-			g.drawString("GAME MODES", 420, 250);
-
+			Color color3 = new Color(0, 173, 209);	
+			
+			//Wave Game Image
+			g.drawImage(image, 190, 100, 720, 100, null);
+			
+			//Game Modes
 			g.setFont(font);
 			g.setColor(color1);
-			//g.drawString("Wave Game", 120, 100);
-			g.drawImage(image2, 200, 45, 720, 115, null);
+			g.drawString("GAME MODES", 420, 250);
 
 			// Waves Button
 			g.setColor(color1);
