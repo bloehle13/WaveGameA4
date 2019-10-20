@@ -65,6 +65,8 @@ public class PlayerBullets extends GameObject{
 					attackHUD.setScore(attackHUD.getScore() + 10);
 					handler.removeObject(tempObject);
 					handler.removeObject(this);
+					Thread thread = new Thread(new Sound(), "shoot");
+					thread.start();
 					}
 				}
 			

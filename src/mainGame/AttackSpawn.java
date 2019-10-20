@@ -24,6 +24,7 @@ public class AttackSpawn {
 	private int pickupTimer, pickupTimer2;
 	private AttackHUD hud;
 
+
 	public AttackSpawn(Handler handler, AttackHUD hud, Game game) {
 		this.handler = handler;
 		this.hud = hud;

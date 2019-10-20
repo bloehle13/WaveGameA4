@@ -40,6 +40,7 @@ public class MouseListener extends MouseAdapter {
 	private double bulletX;
 	private double bulletY;
 	private int bulletSpeed;
+	private Thread thread;
 
 	// this constructor not really necessary but I am leaving it just in case
 	public MouseListener(Game game, Handler handler, HUD hud, Spawn1to5 spawner, Spawn10to15 spawner2, Spawn15to20 spawner3,
@@ -205,7 +206,6 @@ public class MouseListener extends MouseAdapter {
 
 			if (attackHUD.getAmmo() > 0) {
 				player.setShooting(true);
-
 				// pythagorean theorem to direct where the bullets go
 				double diffX = player.getX() - mx - 16;
 				double diffY = player.getY() - my - 16;
@@ -223,6 +223,8 @@ public class MouseListener extends MouseAdapter {
 		else if (game.gameState == STATE.Menu) {
 			// Waves Button
 			if (mouseOver(mx, my, 190, 270, 720, 50)) {
+				Thread thread = new Thread(new Sound(), "menuSelect");
+				thread.start();
 				handler.object.clear();
 				game.gameState = STATE.Game;
 				handler.addObject(player);
@@ -231,6 +233,8 @@ public class MouseListener extends MouseAdapter {
 			}
 			// Coop Button
 			else if (mouseOver(mx, my, 190, 330, 720, 50)) {
+				Thread thread = new Thread(new Sound(), "menuSelect");
+				thread.start();
 				handler.object.clear();
 				game.gameState = STATE.Coop;
 				handler.addObject(player);
@@ -240,6 +244,8 @@ public class MouseListener extends MouseAdapter {
 
 			// Attack Button
 			else if (mouseOver(mx, my, 190, 450, 720, 50)) {
+				Thread thread = new Thread(new Sound(), "menuSelect");
+				thread.start();
 				handler.object.clear();
 				game.gameState = STATE.Attack;
 				handler.addObject(player);
@@ -248,6 +254,8 @@ public class MouseListener extends MouseAdapter {
 			
 			// Server Defense Button
 			else if (mouseOver(mx, my, 190, 390, 720, 50)) /*margin-left, margin-top, width, height*/ {
+				Thread thread = new Thread(new Sound(), "menuSelect");
+				thread.start();
 				handler.object.clear();
 				game.gameState = STATE.Defense;
 				handler.addObject(player2);
@@ -257,11 +265,15 @@ public class MouseListener extends MouseAdapter {
 
 			// Help Button
 			else if (mouseOver(mx, my, 190, 550, 220, 80)) {
+				Thread thread = new Thread(new Sound(), "menuSelect");
+				thread.start();
 				game.gameState = STATE.Help;
 			}
 
 			// Credits
 			else if (mouseOver(mx, my, 440, 550, 220, 80)) {
+				Thread thread = new Thread(new Sound(), "menuSelect");
+				thread.start();
 				JOptionPane.showMessageDialog(game,
 						"Game made by Brandon Loehle in 2016." 
 								+ "\n\nContributions of debugging and enhancements made by Kyle Horton, Rob Laudadio, Ryan Hanlon, "

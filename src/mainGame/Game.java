@@ -22,8 +22,7 @@ import javax.swing.JFrame;
  * pattern. It houses references to ALL of the components of the game
  * @author(main): Brandon Loehle 5/30/16
  * 
- * Edited by: Brian Carballo, Kyle DeGennaro, Lauren Heery, 
-Alexandra Martin, and Christina Popik
+ * Edited by: 
  
  */
 

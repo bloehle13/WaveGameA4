@@ -81,37 +81,6 @@ As a user, I should be able to access and understand the instructions, so that I
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 Nikolai
 
 

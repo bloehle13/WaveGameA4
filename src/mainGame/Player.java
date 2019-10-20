@@ -30,6 +30,7 @@ public class Player extends GameObject {
 	private Game game;
 	private int damage;
 	private Image img;
+	private Image playerDamaged;
 	private KeyInput key;
 	private int playerWidth, playerHeight;
 	public static int playerSpeed = 10;
@@ -39,7 +40,8 @@ public class Player extends GameObject {
 	private double bulletX;
 	private double bulletY;
 	private int bulletSpeed;
-
+	public boolean takingDamage;
+	private int takingDamageTimer;
 	public Player(double x, double y, ID id, Handler handler, HUD hud, CoopHud hud2, AttackHUD attackHUD, ServerHUD serverHUD, Game game) {
 
 		super(x, y, id);
@@ -55,17 +57,34 @@ public class Player extends GameObject {
 		shooting = true;
 		timer = 60;
 		voteCount = 0;
+
+		playerDamaged = getImage("images/playerDamaged.png");
+
 //********* CHANGE HERE FOR NEW PLAYER IMAGE
 		
+
 		if (this.id == ID.Player){
 	
 			img = getImage("images/PurpleFish.png");
 		}
+		takingDamageTimer = 0;
 
 	}
 
 	@Override
 	public void tick() {
+		if (takingDamage == true) {
+			Thread thread = new Thread(new Sound(), "playerDamage");
+			thread.start();
+
+		}
+	
+		if(takingDamageTimer > 0) {
+			takingDamageTimer--;
+		}
+		
+		
+	//System.out.println(takingDamage);
 		this.x += velX;
 		this.y += velY;
 		x = Game.clamp(x, 0, Game.WIDTH - 95);
@@ -188,9 +207,12 @@ public class Player extends GameObject {
 
 				if (getBounds().intersects(tempObject.getBounds())) {// player
 																		// hit
-																		// an
+					System.out.println("Colliding");												// an
 																		// enemy
 					if (this.id == ID.Player) {
+						System.out.println("Colliding With Player");
+						takingDamage = true;
+						takingDamageTimer = 10; //change amount here
 						hud.health -= damage;
 						hud.updateScoreColor(Color.red);
 						attackHUD.health -= 0.5;
@@ -199,9 +221,9 @@ public class Player extends GameObject {
 						hud2.updateScoreColor(Color.red);
 					}
 
-				}
+				} 
 
-			}
+			}  
 
 			if (tempObject.getId() == ID.EnemyBoss) {
 				// Allows player time to get out of upper area where they will
@@ -331,8 +353,14 @@ public class Player extends GameObject {
 	public void render(Graphics g) {
 
 		g.setColor(Color.white);
-		g.drawImage(img, (int) this.x, (int) this.y, 75, 85, null);
-
+		if (takingDamage == false && takingDamageTimer == 0) {
+			g.drawImage(img, (int) this.x, (int) this.y, 75, 85, null);
+		
+		} else{
+			g.drawImage(playerDamaged, (int) this.x, (int) this.y, 75, 85, null);
+			takingDamage = false;
+	
+		}
 	}
 
 	@Override
