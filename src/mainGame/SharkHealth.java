@@ -6,23 +6,25 @@ import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.net.URL;
 
+import javax.swing.ImageIcon;
+
 /**
  * 
  * @author Kyle Horton
  * 
- * Pickup that adds a speed increase to the player.
+ * Pickup that briefly increases the speed of the player.
  *
  */
-public class TwitterSpeed extends Pickup{
+public class SharkHealth extends Pickup{
 	
 	private Handler handler;
 
-	public TwitterSpeed(ID id, Handler handler) {
-		super((Game.WIDTH - 70) * Math.random(), (Game.HEIGHT - 100) * Math.random(), id);
+	public SharkHealth(ID id, Handler handler) {
+		super((Game.WIDTH - 70)*Math.random(), (Game.HEIGHT - 120)*Math.random(), id);
 		this.handler = handler;
 		velX = Math.random()*10;
 		velY = Math.random()*10;
-		img = getImage("images/TwitterImage.png");
+		img = getImage("images/Shark.png");
 	}
 
 
@@ -34,7 +36,7 @@ public class TwitterSpeed extends Pickup{
 		if (this.x <= 0 || this.x >= Game.WIDTH - 70){
 			velX *= -1;
 		}
-		if (this.y<= 0 || this.y >= Game.HEIGHT - 100){
+		if (this.y<= 0 || this.y >= Game.HEIGHT - 120){
 			velY *= -1;
 		}
 		
@@ -54,13 +56,13 @@ public class TwitterSpeed extends Pickup{
 
 
 	public void render(Graphics g) {
-		g.drawImage(img, (int) this.x, (int) this.y, 70, 50, null);
+		g.drawImage(img, (int) this.x, (int) this.y, 70, 90, null);
 		
 	}
 
 
 	public Rectangle getBounds() {
-		return new Rectangle((int) this.x, (int) this.y, 70, 50);
+		return new Rectangle((int) this.x, (int) this.y, 70, 90);
 	}
 
 }

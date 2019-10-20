@@ -5,26 +5,23 @@ import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.net.URL;
-
-import javax.swing.ImageIcon;
-
 /**
  * 
  * @author Kyle Horton
  * 
- * Pickup that adds a health boost to player.
+ * Pickup that briefly decreases the speed of the player.
  *
  */
-public class PutinHealth extends Pickup{
+public class DecreaseSpeedPickup extends Pickup{
 	
 	private Handler handler;
 
-	public PutinHealth(ID id, Handler handler) {
+	public DecreaseSpeedPickup(ID id, Handler handler) {
 		super((Game.WIDTH - 70)*Math.random(), (Game.HEIGHT - 120)*Math.random(), id);
 		this.handler = handler;
 		velX = Math.random()*10;
 		velY = Math.random()*10;
-		img = getImage("images/shark.png");
+		img = getImage("images/SeaShell.png");
 	}
 
 

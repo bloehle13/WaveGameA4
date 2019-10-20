@@ -5,21 +5,27 @@ import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.net.URL;
-import javax.swing.ImageIcon;
-import java.awt.Rectangle;
 
-public class PickupVote extends Pickup {
-	public Handler handler;
+/**
+ * 
+ * @author Kyle Horton
+ * 
+ * Pickup that decreases player's health.
+ *
+ */
+public class DecreaseHealthPickup extends Pickup{
 	
-	public PickupVote(ID id, Handler handler) {
-			super(Game.WIDTH*Math.random(), Game.HEIGHT*Math.random(), id);
-			this.handler = handler;
-			velX = Math.random()*10;
-			velY = Math.random()*10;
-			img = getImage("images/VoteImage1.png");
-			
+	private Handler handler;
+
+	public DecreaseHealthPickup(ID id, Handler handler) {
+		super((Game.WIDTH - 100)*Math.random(), (Game.HEIGHT - 120)*Math.random(), id);
+		this.handler = handler;
+		velX = Math.random()*10;
+		velY = Math.random()*10;
+		img = getImage("images/SeaUrchin.png");
 	}
-	
+
+
 	public void tick() {
 		
 		this.x += velX;
@@ -28,7 +34,7 @@ public class PickupVote extends Pickup {
 		if (this.x <= 0 || this.x >= Game.WIDTH - 100){
 			velX *= -1;
 		}
-		if (this.y<= 0 || this.y >= Game.HEIGHT - 100){
+		if (this.y<= 0 || this.y >= Game.HEIGHT - 120){
 			velY *= -1;
 		}
 		
@@ -48,15 +54,14 @@ public class PickupVote extends Pickup {
 
 
 	public void render(Graphics g) {
-		g.drawImage(img, (int) this.x, (int) this.y, 100, 100, null);
+		g.drawImage(img, (int) this.x, (int) this.y, 100, 70, null);
 		
 	}
 
 
 	public Rectangle getBounds() {
-		return new Rectangle((int) this.x, (int) this.y, 100, 100);
+		return new Rectangle((int) this.x, (int) this.y, 100, 70);
 	}
-	
-
 
 }
+

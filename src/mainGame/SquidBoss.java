@@ -16,7 +16,7 @@ import java.net.URL;
  *
  */
 
-public class BossPong extends GameObject {
+public class SquidBoss extends GameObject {
 
 	private Image img;
 	private float alpha = 1;
@@ -27,9 +27,9 @@ public class BossPong extends GameObject {
 	private double destX;
 	private double destY;
 
-	public BossPong(double x, double y, ID id, Handler handler) {
+	public SquidBoss(double x, double y, ID id, Handler handler) {
 		super(x, y, id);
-		this.img = getImage("images/KimmelImage.png");
+		this.img = getImage("images/Squid.png");
 		this.velX = 12;
 		this.velY = 0;
 		this.handler = handler;

@@ -12,7 +12,7 @@ import java.util.Random;
  *  Class that creates the Hillary boss. 
  *
  */
-public class HillaryBoss extends GameObject {
+public class SealBoss extends GameObject {
 
 	private Handler handler;
 	private int timer;
@@ -23,11 +23,11 @@ public class HillaryBoss extends GameObject {
 	private Image img2;
 
 	// constructor that takes in location and velocity factors
-	HillaryBoss(double x, double y, double velX, double velY, int size, String side, ID id, Handler handler) {
+	SealBoss(double x, double y, double velX, double velY, int size, String side, ID id, Handler handler) {
 		super(x, y, id);
 
-		img = getImage("images/HilaryImage.png");
-		img2 = getImage("images/SnakeBody.png");
+		img = getImage("images/Seal.png");
+		img2 = getImage("images/SeaGrass.png");
 		this.timer = 60;
 		this.handler = handler;
 		this.velX = velX;

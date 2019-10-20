@@ -5,23 +5,25 @@ import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.net.URL;
+
 /**
  * 
  * @author Kyle Horton
  * 
- * Pickup that decreases the players speed.
+ * Pickup that increases player's health.
  *
  */
-public class NFLSpeed extends Pickup{
+public class IncreaseHealthPickup extends Pickup{
 	
 	private Handler handler;
 
-	public NFLSpeed(ID id, Handler handler) {
-		super((Game.WIDTH - 70)*Math.random(), (Game.HEIGHT - 120)*Math.random(), id);
+	public IncreaseHealthPickup(ID id, Handler handler) {
+		
+		super((Game.WIDTH - 100)*Math.random(), (Game.HEIGHT - 120)*Math.random(), id);
 		this.handler = handler;
 		velX = Math.random()*10;
 		velY = Math.random()*10;
-		img = getImage("images/NFLImage.png");
+		img = getImage("images/HealthPickup.png");
 	}
 
 
@@ -30,7 +32,7 @@ public class NFLSpeed extends Pickup{
 		this.x += velX;
 		this.y += velY;
 		
-		if (this.x <= 0 || this.x >= Game.WIDTH - 70){
+		if (this.x <= 0 || this.x >= Game.WIDTH - 100){
 			velX *= -1;
 		}
 		if (this.y<= 0 || this.y >= Game.HEIGHT - 120){
@@ -53,13 +55,14 @@ public class NFLSpeed extends Pickup{
 
 
 	public void render(Graphics g) {
-		g.drawImage(img, (int) this.x, (int) this.y, 70, 90, null);
+		g.drawImage(img, (int) this.x, (int) this.y, 100, 70, null);
 		
 	}
 
 
 	public Rectangle getBounds() {
-		return new Rectangle((int) this.x, (int) this.y, 70, 90);
+		return new Rectangle((int) this.x, (int) this.y, 100, 70);
 	}
 
 }
+

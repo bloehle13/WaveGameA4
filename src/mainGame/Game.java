@@ -59,8 +59,10 @@ public class Game extends Canvas implements Runnable {
 	public static int TEMP_COUNTER;
 	public String temp;
 	Sound sound = new Sound();
-	
+
+
 	private boolean isPaused = false;
+
 
 	/**
 	 * Used to switch between each of the screens shown to the user
