@@ -175,7 +175,7 @@ public class Spawn5to10 {
 					levelTimer = 1500;
 					tempCounter++;
 					
-					handler.addPickup(new DecreaseSpeedPickup(ID.NFLSpeed, handler));
+					handler.addPickup(new NFLSpeed(ID.NFLSpeed, handler));
 				}
 				if (game.gameState == STATE.Coop) {
 					if (voteTimer == 0) {
@@ -209,9 +209,9 @@ public class Spawn5to10 {
 							-20, ID.EnemyShooter, this.handler));
 
 					if (hud.health <= 50){
-						handler.addPickup(new SharkHealth(ID.PutinHealth, handler));
+						handler.addPickup(new PutinHealth(ID.PutinHealth, handler));
 					} else {
-						handler.addPickup(new DecreaseHealthPickup(ID.EminemHealth, handler));
+						handler.addPickup(new EminemHealth(ID.EminemHealth, handler));
 					}
 
 					levelTimer = 1300;
@@ -283,12 +283,12 @@ public class Spawn5to10 {
 				tempCounter++;
 		
 				if (hud.health <= 60) {
-					handler.addPickup(new SharkHealth(ID.PutinHealth, handler));
+					handler.addPickup(new PutinHealth(ID.PutinHealth, handler));
 				} else {
-					handler.addPickup(new IncreaseSpeedPickup(ID.TwitterSpeed, handler));
+					handler.addPickup(new TwitterSpeed(ID.TwitterSpeed, handler));
 				}
 				
-				handler.addObject(new SquidBoss(10, 10, ID.BossPong, handler));
+				handler.addObject(new BossPong(10, 10, ID.BossPong, handler));
 				hud.setBossLevel("Boss Two");
 				hud.setBoss(true);
 		

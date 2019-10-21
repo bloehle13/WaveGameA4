@@ -16,7 +16,7 @@ public class PickupVote extends Pickup {
 			this.handler = handler;
 			velX = Math.random()*10;
 			velY = Math.random()*10;
-			img = getImage("images/VoteImage1.png");
+			img = getImage("images/vote2.png");
 			
 	}
 	

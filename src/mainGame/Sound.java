@@ -37,9 +37,9 @@ public class Sound implements Runnable {
 		} else if (Thread.currentThread().getName() == "EminemDecrease") {
 			System.out.println("Eminem Noise Triggered");
 			file = new File("Sound/slimShady.wav");
-		} else if (Thread.currentThread().getName() == "menuSelect") {
-			System.out.println("Menu Select Noise Triggered");
-			file = new File("Sound/menuSelect.wav");
+		} else if (Thread.currentThread().getName() == "twitterNoise") {
+			System.out.println("Twitter Noise Triggerd");
+			file = new File("Sound/fakeNews.wav");
 		} else if (Thread.currentThread().getName() == "NFLSound") {
 			System.out.println("NFL Noise Triggered");
 			file = new File("Sound/nflTheme.wav");
@@ -49,12 +49,9 @@ public class Sound implements Runnable {
 		} else if (Thread.currentThread().getName() == "death") {
 			System.out.println("Death Triggered");
 			file = new File("Sound/starwarsScream.wav");
-		} else if (Thread.currentThread().getName() == "shoot") {
-			System.out.println("Enemy shot with player bullet Sound ");
-			file = new File("Sound/laser.wav");
-		} else if (Thread.currentThread().getName() == "playerDamage") {
-			System.out.println("player hit by enemy sound");
-			file = new File("Sound/playerHit.wav");
+		} else if (Thread.currentThread().getName() == "comradeVictory") {
+			System.out.println("Programmers of the world unite!");
+			file = new File("Sound/sovUnionAnthem.wav");
 		}
 
 		// This is where file is read in

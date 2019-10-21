@@ -22,7 +22,8 @@ import javax.swing.JFrame;
  * pattern. It houses references to ALL of the components of the game
  * @author(main): Brandon Loehle 5/30/16
  * 
- * Edited by: 
+ * Edited by: Brian Carballo, Kyle DeGennaro, Lauren Heery, 
+Alexandra Martin, and Christina Popik
  
  */
 
@@ -59,10 +60,8 @@ public class Game extends Canvas implements Runnable {
 	public static int TEMP_COUNTER;
 	public String temp;
 	Sound sound = new Sound();
-
-
+	
 	private boolean isPaused = false;
-
 
 	/**
 	 * Used to switch between each of the screens shown to the user
