@@ -119,25 +119,25 @@ public class Menu {
 			g.drawString("WAVES", 490, 307);
 
 			// Coop Button
-						g.setColor(color1);
-						g.drawRect(190, 330, 720, 50);
-						g.setFont(font2);
-						g.setColor(color1);
-						g.drawString("CO-OP", 490, 365);
+			g.setColor(color1);
+			g.drawRect(190, 330, 720, 50);
+			g.setFont(font2);
+			g.setColor(color1);
+			g.drawString("CO-OP", 490, 365);
 			
 			// Server Defense Button
-						g.setColor(color1);
-						g.drawRect(190, 390, 720, 50); //left margin, top margin, width, height 
-						g.setFont(font2);
-						g.setColor(color1);
-						g.drawString("SERVER DEFENSE", 410, 428);
+			g.setColor(color1);
+			g.drawRect(190, 390, 720, 50); //left margin, top margin, width, height 
+			g.setFont(font2);
+			g.setColor(color1);
+			g.drawString("SERVER DEFENSE", 410, 428);
 
-						// Attack Button
-						g.setColor(color1);
-						g.drawRect(190, 450, 720, 50);
-						g.setFont(font2);
-						g.setColor(color1);
-						g.drawString("ATTACK", 483, 487);
+			// Attack Button
+			g.setColor(color1);
+			g.drawRect(190, 450, 720, 50);
+			g.setFont(font2);
+			g.setColor(color1);
+			g.drawString("ATTACK", 483, 487);
 
 			// Help Button
 			g.setColor(color1);
@@ -194,34 +194,15 @@ public class Menu {
 			
 			g.setFont(font2);
 			g.setColor(Color.cyan);
-			g.drawString("CO-OP:", 90, 375);
+			g.drawString("Attack:", 90, 375);
 			g.setFont(font2);
 			
 			g.setFont(font2);
 			g.setColor(Color.white);
-			g.drawString("Player 1 moves by WASD keys and Player 2 moves by", 153, 375);
-			g.drawString("arrow keys.The first player to collect 20 treats wins.", 153, 395);
+			g.drawString("Shoot back at the enemies by clicking on the screen.", 153, 375);
+			g.drawString("Reload with the Enter key", 153, 395);
 			
-			g.setFont(font2);
-			g.setColor(Color.cyan);
-			g.drawString("Coral Reef Defense:", 90, 450);
-			g.setFont(font2);
-			
-			g.setFont(font2);
-			g.setColor(Color.white);
-			g.drawString("Defend the Coral Reef from incoming enemies!", 242, 450);
-			g.drawString("As you get closer to the enemies, they will be", 242, 470);
-			g.drawString("pulled away from the reef.", 242, 490);
-			
-			g.setFont(font2);
-			g.setColor(Color.cyan);
-			g.drawString("Attack:", 90, 525);
-			g.setFont(font2);
-			
-			g.setFont(font2);
-			g.setColor(Color.white);
-			g.drawString("Shoot back at the enemies using the mouse click.", 152, 525);
-			g.drawString("Reload with ‘R’ or ‘Enter’ keys.", 155, 545);
+		
 			
 			g.setFont(font2);
 			g.setColor(Color.white);
@@ -241,7 +222,7 @@ public class Menu {
 			
 			g.setFont(font2);
 			g.setColor(Color.white);
-			g.drawString("Increases player’s health", 688, 320);
+			g.drawString("Increases player's health", 688, 320);
 			
 			g.setFont(font2);
 			g.setColor(Color.cyan);
@@ -249,7 +230,7 @@ public class Menu {
 			
 			g.setFont(font2);
 			g.setColor(Color.white);
-			g.drawString("Increases the player’s speed for the rest of that level", 665, 350);
+			g.drawString("Increases the player's speed for the rest of that level", 665, 350);
 			
 			g.setFont(font2);
 			g.setColor(Color.cyan);
@@ -270,7 +251,7 @@ public class Menu {
 			
 			g.setFont(font2);
 			g.setColor(Color.white);
-			g.drawString("Decreases player’s health", 665, 455);
+			g.drawString("Decreases player's health", 665, 455);
 			
 			g.setFont(font2);
 			g.setColor(Color.cyan);
@@ -278,7 +259,7 @@ public class Menu {
 			
 			g.setFont(font2);
 			g.setColor(Color.white);
-			g.drawString("Decreases the player’s speed for the rest", 683, 485);
+			g.drawString("Decreases the player's speed for the rest of the level", 683, 485);
 		
 		
 			g.setColor(Color.white);
