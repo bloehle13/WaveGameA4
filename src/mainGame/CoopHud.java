@@ -11,7 +11,7 @@ import mainGame.Game.STATE;
  * @author Ryan Hanlon 10/23/17
  *
  */
-
+ 
 public class CoopHud {
 
 	public double health = 100;
@@ -177,3 +177,4 @@ public class CoopHud {
 		return state;
 	}
 }
+

@@ -35,7 +35,7 @@ public class Server extends GameObject {
 		this.damage = 1;
 		timer = 60;
 		
-		img = getImage("images/CoralReef.png");
+		img = getImage("images/Coralreef.png");
 
 	}
 

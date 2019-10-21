@@ -170,8 +170,8 @@ public class Spawn15to20 {
 					levelTimer = 1500;
 					tempCounter++;
 					
-					handler.addPickup(new DecreaseSpeedPickup(ID.NFLSpeed, handler));
-					handler.addPickup(new IncreaseHealthPickup(ID.HealthPowerUp, handler));
+					handler.addPickup(new NFLSpeed(ID.NFLSpeed, handler));
+					handler.addPickup(new HealthPowerUp(ID.HealthPowerUp, handler));
 				}
 				if (game.gameState == STATE.Coop) {
 					if (voteTimer == 0) {
@@ -205,9 +205,9 @@ public class Spawn15to20 {
 							-20, ID.EnemyShooter, this.handler));
 
 					if (hud.health <= 50){
-						handler.addPickup(new SharkHealth(ID.PutinHealth, handler));
+						handler.addPickup(new PutinHealth(ID.PutinHealth, handler));
 					} else {
-						handler.addPickup(new DecreaseHealthPickup(ID.EminemHealth, handler));
+						handler.addPickup(new EminemHealth(ID.EminemHealth, handler));
 					}
 
 					levelTimer = 1300;
@@ -279,13 +279,13 @@ public class Spawn15to20 {
 				tempCounter++;
 				
 				if (hud.health <= 60 && hud.health > 30) {
-					handler.addPickup(new SharkHealth(ID.PutinHealth, handler));
+					handler.addPickup(new PutinHealth(ID.PutinHealth, handler));
 				}
 				if (hud.health <= 30 && hud.health > 20) {
 					handler.addPickup(new NRABonusLife(ID.NRABonusLife, handler));
 				}
 				if (hud.health <= 20) {
-					handler.addPickup(new IncreaseSpeedPickup(ID.TwitterSpeed, handler));
+					handler.addPickup(new TwitterSpeed(ID.TwitterSpeed, handler));
 				}
 
 					handler.addObject(new BossEye(Game.WIDTH - 150, Game.HEIGHT - 200, ID.BossEye, handler, 1));

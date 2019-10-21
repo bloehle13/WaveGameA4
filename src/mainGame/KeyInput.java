@@ -86,7 +86,6 @@ public class KeyInput extends KeyAdapter {
 		if (key == KeyEvent.VK_W || key == KeyEvent.VK_UP) {
 			playerObject.setVelY(-(this.speed));
 			keyDown[0] = true;
-			
 		}
 		if (key == KeyEvent.VK_A || key == KeyEvent.VK_LEFT) {
 			playerObject.setVelX(-(this.speed));

@@ -207,9 +207,9 @@ public class Spawn10to15 {
 							-20, ID.EnemyShooter, this.handler));
 
 					if (hud.health <= 50){
-						handler.addPickup(new SharkHealth(ID.PutinHealth, handler));
+						handler.addPickup(new PutinHealth(ID.PutinHealth, handler));
 					} else {
-						handler.addPickup(new DecreaseHealthPickup(ID.EminemHealth, handler));
+						handler.addPickup(new EminemHealth(ID.EminemHealth, handler));
 					}
 
 					levelTimer = 1300;
@@ -281,17 +281,17 @@ public class Spawn10to15 {
 				tempCounter++;
 		
 				if (hud.health <= 60) {
-					handler.addPickup(new SharkHealth(ID.PutinHealth, handler));
+					handler.addPickup(new PutinHealth(ID.PutinHealth, handler));
 				} else {
-					handler.addPickup(new IncreaseSpeedPickup(ID.TwitterSpeed, handler));
+					handler.addPickup(new TwitterSpeed(ID.TwitterSpeed, handler));
 				}
 		
 			}
 		
 			if (timer <= 0) {
 		
-				handler.addObject(new SealBoss(-250, 250, hud.getHillaryX(), hud.getHillaryY(), 250, side[r.nextInt(4)], ID.HillaryBoss, handler));
-				handler.addPickup(new CoinPickup(ID.HillaryEmail, handler));
+				handler.addObject(new HillaryBoss(-250, 250, hud.getHillaryX(), hud.getHillaryY(), 250, side[r.nextInt(4)], ID.HillaryBoss, handler));
+				handler.addPickup(new HillaryEmail(ID.HillaryEmail, handler));
 				timer = 30;
 		
 			}
