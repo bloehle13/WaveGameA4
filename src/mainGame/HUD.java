@@ -33,7 +33,7 @@ public class HUD {
 	private boolean doubleHealth = false;
 	private String ability = "";
 	private int abilityUses;
-	private Color scoreColor = Color.white;
+	private Color scoreColor = Color.black;
 	private int extraLives = 0;
 	private STATE state = null;
 	private int hillarySpeedX = 20; // tracks speeds of hillary boss
@@ -70,14 +70,11 @@ public class HUD {
 		g.drawRect(15, 15, healthBarWidth, 30);
 		g.setFont(font);
 		g.setColor(Color.black);
-		if (state != STATE.Coop) {
-			g.drawString("Score: " + score, 15, 100);
-		}else {
-			g.drawString("Vote Count: " + voteCount, 15, 115);
-		}
 		
 		g.setFont(font2);
 		g.setColor(Color.black);
+		g.drawString("Score:" + score, 50, 100);
+		
 		if (isBoss == false) {
 		g.drawString("Level: " + level, 475, 45);
 		} else {

@@ -68,7 +68,7 @@ public class Game extends Canvas implements Runnable {
 	 * Used to switch between each of the screens shown to the user
 	 */
 	public enum STATE {
-		Menu, Help, Game, GameOver, Upgrade, Coop, Attack, Victory, Defense
+		Menu, Help, Game, GameOver, Upgrade, Attack, Victory, 
 	};
 
 	/**
@@ -79,15 +79,13 @@ public class Game extends Canvas implements Runnable {
 		hud = new HUD();
 		hud2 = new CoopHud();
 		attackHUD = new AttackHUD();
-		serverHUD = new ServerHUD();
 		spawner = new Spawn1to5(this.handler, this.hud, this.hud2, this);
-		spawner2 = new Spawn5to10(this.handler, this.hud, this.hud2, this.spawner, this);
-		spawner3 = new Spawn10to15(this.handler, this.hud, this.hud2, this.spawner2, this);
-		spawner4 = new Spawn15to20(this.handler, this.hud,this.hud2,this.spawner3, this);
+		//spawner2 = new Spawn5to10(this.handler, this.hud, this.hud2, this.spawner, this);
+		//spawner3 = new Spawn10to15(this.handler, this.hud, this.hud2, this.spawner2, this);
+		//spawner4 = new Spawn15to20(this.handler, this.hud,this.hud2,this.spawner3, this);
 		attackSpawn = new AttackSpawn(this.handler, this.attackHUD, this);
-		dSpawner = new DefenseSpawner(this.handler,this.serverHUD, this.hud2, this);
 		menu = new Menu(this, this.handler, this.hud, this.spawner);
-		upgradeScreen = new UpgradeScreen(this, this.handler, this.hud);
+		//upgradeScreen = new UpgradeScreen(this, this.handler, this.hud);
 		player = new Player(WIDTH / 2 - 32, HEIGHT / 2 - 32, ID.Player, handler, this.hud, this.hud2, this.attackHUD, this.serverHUD, this);
 		player2 = new Player(WIDTH / 2 + 100, HEIGHT / 2 - 32, ID.Player2, handler, this.hud, this.hud2, this.attackHUD, this.serverHUD, this);
 		server = new Server(WIDTH / 2 - 32, HEIGHT / 2 - 32, ID.Server, handler, this.serverHUD, this);
@@ -185,28 +183,6 @@ public class Game extends Canvas implements Runnable {
 			attackHUD.tick();
 			attackSpawn.tick();
 
-		} else if (gameState == STATE.Coop) { //changes game state to different game mode for coop
-			hud.tick();
-			hud.setState(STATE.Coop);
-			hud2.tick();
-			hud2.setState(STATE.Coop);
-
-			if (Spawn1to5.LEVEL_SET == 1) {// user is on levels 1 thru 10,
-											// update them
-				spawner.tick();
-			} else if (Spawn1to5.LEVEL_SET == 2) {// user is on levels 10 thru
-													// 20, update them
-				spawner2.tick();
-			} else if (Spawn1to5.LEVEL_SET ==3){
-				spawner3.tick();
-			} else if (Spawn1to5.LEVEL_SET == 4){
-				spawner4.tick();
-			}
-		} else if (gameState == STATE.Defense) {
-			//hud2.tick();
-			serverHUD.setState(STATE.Defense);
-			serverHUD.tick();
-			dSpawner.tick();
 		} else if (gameState == STATE.Menu || gameState == STATE.Help) {// user
 																		// is on
 																		// menu,
@@ -254,13 +230,8 @@ public class Game extends Canvas implements Runnable {
 
 		if (gameState == STATE.Game) {// user is playing game, draw game objects
 			hud.render(g);
-		} else if (gameState == STATE.Coop) {
-			hud.render(g);
-			hud2.render(g);
 		} else if (gameState == STATE.Attack) {
 			attackHUD.render(g);
-		} else if (gameState == STATE.Defense){
-			serverHUD.render(g);
 		} else if (gameState == STATE.Menu || gameState == STATE.Help) {// user
 																		// is in
 																		// help

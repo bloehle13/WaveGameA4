@@ -98,8 +98,6 @@ public class Player extends GameObject {
 		}
 		if (game.gameState == STATE.Game)
 			checkIfDead();
-		if (game.gameState == STATE.Coop)
-			checkIfDeadCoop();
 		if (game.gameState == STATE.Attack) {
 			checkIfDeadAttack();
 

@@ -94,14 +94,6 @@ public class Spawn5to10 {
 				tempCounter++;// ensures the method is only called once
 			}
 			
-			//voteTimer spawns another vote after the timer reaches 0
-			if (game.gameState == STATE.Coop) {
-				if (voteTimer == 0) {
-					handler.addPickup(new PickupVote(ID.Vote, handler));
-					voteTimer = timer;
-				}
-			}
-			
 			if (spawnTimer == 0) {// time to spawn another enemy
 				handler.addObject(
 				new EnemyFBI(r.nextInt(Game.WIDTH), r.nextInt(Game.HEIGHT), -4, -10, ID.EnemyFBI, handler));// add them to the handler, which handles all game objects
@@ -131,12 +123,7 @@ public class Spawn5to10 {
 					levelTimer = 2000;
 					tempCounter++;
 				}
-				if (game.gameState == STATE.Coop) {
-					if (voteTimer == 0) {
-						handler.addPickup(new PickupVote(ID.Vote, handler));
-						voteTimer = timer;
-					}
-				}
+				
 				if (spawnTimer == 30) {
 					handler.addObject(
 							new EnemySweep(r.nextInt(Game.WIDTH), r.nextInt(Game.HEIGHT), 25, 2, ID.EnemySweep, handler));
@@ -177,12 +164,7 @@ public class Spawn5to10 {
 					
 					handler.addPickup(new DecreaseSpeedPickup(ID.NFLSpeed, handler));
 				}
-				if (game.gameState == STATE.Coop) {
-					if (voteTimer == 0) {
-						handler.addPickup(new PickupVote(ID.Vote, handler));
-						voteTimer = timer;
-					}
-				}
+				
 				if (spawnTimer == 0) {
 					handler.addObject(new EnemyDash(r.nextInt(Game.WIDTH), r.nextInt(Game.HEIGHT), -7, ID.EnemySmart, handler));
 					spawnTimer = 100;
@@ -217,12 +199,6 @@ public class Spawn5to10 {
 					levelTimer = 1300;
 					tempCounter++;
 				}
-				if (game.gameState == STATE.Coop) {
-					if (voteTimer == 0) {
-						handler.addPickup(new PickupVote(ID.Vote, handler));
-						voteTimer = timer;
-					}
-				}
 
 				if (levelTimer == 0) {
 					handler.clearEnemies();
@@ -248,12 +224,7 @@ public class Spawn5to10 {
 					tempCounter++;
 					handler.addPickup(new NRABonusLife(ID.NRABonusLife, handler));
 				}
-				if (game.gameState == STATE.Coop) {
-					if (voteTimer == 0) {
-						handler.addPickup(new PickupVote(ID.Vote, handler));
-						voteTimer = timer;
-					}
-				}
+				
 				if (spawnTimer <= 0) {
 					handler.addObject(new EnemyBurst(-200, 200, 40, 40, 200, side[r.nextInt(4)], ID.EnemyBurst, handler));
 					spawnTimer = 180;
