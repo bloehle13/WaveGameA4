@@ -104,7 +104,7 @@ public class Spawn5to10 {
 			
 			if (spawnTimer == 0) {// time to spawn another enemy
 				handler.addObject(
-				new EnemyFBI(r.nextInt(Game.WIDTH), r.nextInt(Game.HEIGHT), -4, -10, ID.EnemyFBI, handler));// add them to the handler, which handles all game objects
+				new EnemyCombination(r.nextInt(Game.WIDTH), r.nextInt(Game.HEIGHT), -4, -10, ID.EnemyCombination, handler));// add them to the handler, which handles all game objects
 
 				spawnTimer = 100;// reset the spawn timer
 			}
@@ -175,7 +175,7 @@ public class Spawn5to10 {
 					levelTimer = 1500;
 					tempCounter++;
 					
-					handler.addPickup(new DecreaseSpeedPickup(ID.NFLSpeed, handler));
+					handler.addPickup(new DecreaseSpeedPickup(ID.DecreaseSpeedPickup, handler));
 				}
 				if (game.gameState == STATE.Coop) {
 					if (voteTimer == 0) {
@@ -209,9 +209,9 @@ public class Spawn5to10 {
 							-20, ID.EnemyShooter, this.handler));
 
 					if (hud.health <= 50){
-						handler.addPickup(new SharkHealth(ID.PutinHealth, handler));
+						handler.addPickup(new SharkHealth(ID.SharkHealth, handler));
 					} else {
-						handler.addPickup(new DecreaseHealthPickup(ID.EminemHealth, handler));
+						handler.addPickup(new DecreaseHealthPickup(ID.DecreaseHealthPickup, handler));
 					}
 
 					levelTimer = 1300;
@@ -283,19 +283,19 @@ public class Spawn5to10 {
 				tempCounter++;
 		
 				if (hud.health <= 60) {
-					handler.addPickup(new SharkHealth(ID.PutinHealth, handler));
+					handler.addPickup(new SharkHealth(ID.SharkHealth, handler));
 				} else {
-					handler.addPickup(new IncreaseSpeedPickup(ID.TwitterSpeed, handler));
+					handler.addPickup(new IncreaseSpeedPickup(ID.IncreaseSpeedPickup, handler));
 				}
 				
-				handler.addObject(new SquidBoss(10, 10, ID.BossPong, handler));
+				handler.addObject(new SquidBoss(10, 10, ID.SquidBoss, handler));
 				hud.setBossLevel("Boss Two");
 				hud.setBoss(true);
 		
 			} else if (tempCounter >= 1) {
 				for (int i = 0; i < handler.object.size(); i++) {
 					GameObject tempObject = handler.object.get(i);
-					if (tempObject.getId() == ID.BossPong) {
+					if (tempObject.getId() == ID.SquidBoss) {
 						if (tempObject.getHealth() <= 0) {
 							handler.removeObject(tempObject);
 							handler.pickups.clear();

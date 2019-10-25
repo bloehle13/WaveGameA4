@@ -67,7 +67,7 @@ public class DefenseSpawner {
 			spawnTimer--;// keep decrementing the spawning spawnTimer 60 times a second
 			if (spawnTimer == 0) {// time to spawn another enemy
 				handler.addObject(
-				new EnemyFBI2(r.nextInt(Game.WIDTH), r.nextInt(Game.HEIGHT), -3, -10, ID.EnemyFBI, handler));// add them to the handler, which handles all game objects
+				new EnemyCombination2(r.nextInt(Game.WIDTH), r.nextInt(Game.HEIGHT), -3, -10, ID.EnemyCombination, handler));// add them to the handler, which handles all game objects
 
 				spawnTimer = 100;// reset the spawn timer
 			}

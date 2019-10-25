@@ -99,7 +99,7 @@ public class Spawn15to20 {
 			
 			if (spawnTimer == 0) {// time to spawn another enemy
 				handler.addObject(
-				new EnemyFBI(r.nextInt(Game.WIDTH), r.nextInt(Game.HEIGHT), -4, -11, ID.EnemyFBI, handler));// add them to the handler, which handles all game objects
+				new EnemyCombination(r.nextInt(Game.WIDTH), r.nextInt(Game.HEIGHT), -4, -11, ID.EnemyCombination, handler));// add them to the handler, which handles all game objects
 
 				spawnTimer = 100;// reset the spawn timer
 			}
@@ -170,8 +170,8 @@ public class Spawn15to20 {
 					levelTimer = 1500;
 					tempCounter++;
 					
-					handler.addPickup(new DecreaseSpeedPickup(ID.NFLSpeed, handler));
-					handler.addPickup(new IncreaseHealthPickup(ID.HealthPowerUp, handler));
+					handler.addPickup(new DecreaseSpeedPickup(ID.DecreaseSpeedPickup, handler));
+					handler.addPickup(new IncreaseHealthPickup(ID.IncreaseHealthPickup, handler));
 				}
 				if (game.gameState == STATE.Coop) {
 					if (voteTimer == 0) {
@@ -205,9 +205,9 @@ public class Spawn15to20 {
 							-20, ID.EnemyShooter, this.handler));
 
 					if (hud.health <= 50){
-						handler.addPickup(new SharkHealth(ID.PutinHealth, handler));
+						handler.addPickup(new SharkHealth(ID.SharkHealth, handler));
 					} else {
-						handler.addPickup(new DecreaseHealthPickup(ID.EminemHealth, handler));
+						handler.addPickup(new DecreaseHealthPickup(ID.DecreaseHealthPickup, handler));
 					}
 
 					levelTimer = 1300;
@@ -279,13 +279,13 @@ public class Spawn15to20 {
 				tempCounter++;
 				
 				if (hud.health <= 60 && hud.health > 30) {
-					handler.addPickup(new SharkHealth(ID.PutinHealth, handler));
+					handler.addPickup(new SharkHealth(ID.SharkHealth, handler));
 				}
 				if (hud.health <= 30 && hud.health > 20) {
 					handler.addPickup(new NRABonusLife(ID.NRABonusLife, handler));
 				}
 				if (hud.health <= 20) {
-					handler.addPickup(new IncreaseSpeedPickup(ID.TwitterSpeed, handler));
+					handler.addPickup(new IncreaseSpeedPickup(ID.IncreaseSpeedPickup, handler));
 				}
 
 					handler.addObject(new BossEye(Game.WIDTH - 150, Game.HEIGHT - 200, ID.BossEye, handler, 1));
