@@ -197,8 +197,8 @@ public class Player extends GameObject {
 					|| tempObject.getId() == ID.EnemySmart || tempObject.getId() == ID.EnemyBossBullet
 					|| tempObject.getId() == ID.EnemySweep || tempObject.getId() == ID.EnemyShooterBullet
 					|| tempObject.getId() == ID.EnemyBurst || tempObject.getId() == ID.EnemyShooter
-					|| tempObject.getId() == ID.BossEye || tempObject.getId() == ID.HillaryBoss
-					|| tempObject.getId() == ID.EnemyFBI || tempObject.getId() == ID.SmartBoss || tempObject.getId() == ID.BossPong) {// tempObject
+					|| tempObject.getId() == ID.BossEye || tempObject.getId() == ID.CoinPickup
+					|| tempObject.getId() == ID.EnemyCombination || tempObject.getId() == ID.SmartBoss || tempObject.getId() == ID.SquidBoss) {// tempObject
 																									// is
 																									// an
 																									// enemy
@@ -247,7 +247,7 @@ public class Player extends GameObject {
 		// if player does, affect player, remove item from array
 		for (int i = 0; i < handler.pickups.size(); i++) {
 			Pickup tempObject = handler.pickups.get(i);
-			if (tempObject.getId() == ID.HealthPowerUp) {
+			if (tempObject.getId() == ID.IncreaseHealthPickup) {
 				if (getBounds().intersects(tempObject.getBounds())) {
 
 					if (hud.health >= 60) {
@@ -267,7 +267,7 @@ public class Player extends GameObject {
 				}
 
 			}                /// *****NEED TO CHANGE FOR CHAR ------
-			if (tempObject.getId() == ID.EminemHealth) {
+			if (tempObject.getId() == ID.DecreaseHealthPickup) {
 				if (getBounds().intersects(tempObject.getBounds())) {
 
 					if (hud.health <= 40) {
@@ -283,7 +283,7 @@ public class Player extends GameObject {
 
 				}
 			}						/// *****CHANGE 
-			if (tempObject.getId() == ID.TwitterSpeed) {
+			if (tempObject.getId() == ID.IncreaseSpeedPickup) {
 				if (getBounds().intersects(tempObject.getBounds())) {
 					playerSpeed = 20;
 					handler.removePickup(tempObject);
@@ -303,7 +303,7 @@ public class Player extends GameObject {
 					}
 				}
 			}						/// *****CHANGE 
-			if (tempObject.getId() == ID.NFLSpeed) {
+			if (tempObject.getId() == ID.DecreaseSpeedPickup) {
 				if (getBounds().intersects(tempObject.getBounds())) {
 					playerSpeed = 5;
 					handler.removePickup(tempObject);
@@ -313,7 +313,7 @@ public class Player extends GameObject {
 				}
 			}
 									/// *****CHANGE 
-			if (tempObject.getId() == ID.HillaryEmail) {
+			if (tempObject.getId() == ID.CoinPickup) {
 				if (getBounds().intersects(tempObject.getBounds())) {
 					
 					hud.setHillaryX(hud.getHillaryX() - 2);
@@ -327,10 +327,6 @@ public class Player extends GameObject {
 				if (getBounds().intersects(tempObject.getBounds())) {
 					if (this.id == ID.Player)
 						hud.updateVote();
-					if (this.id == ID.Player2)
-						hud2.updateVote();
-					handler.removePickup(tempObject);
-				}
 			}
 			if (tempObject.getId() == ID.AmmoPickup) {
 				if (getBounds().intersects(tempObject.getBounds())) {
@@ -344,6 +340,7 @@ public class Player extends GameObject {
 					handler.clearSmartEnemy();
 					handler.removePickup(tempObject);
 
+					}
 				}
 			}
 		}
