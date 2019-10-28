@@ -62,18 +62,18 @@ public class Sound implements Runnable {
 		try {
 			audioIn = AudioSystem.getAudioInputStream(file);
 		} catch (UnsupportedAudioFileException | IOException e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 		clip = null;
 		try {
 			clip = AudioSystem.getClip();
 		} catch (LineUnavailableException e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 		try {
 			clip.open(audioIn);
 		} catch (LineUnavailableException | IOException e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 
 		// Increases volume of all sound files except background music

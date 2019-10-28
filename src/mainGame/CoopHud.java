@@ -59,11 +59,7 @@ public class CoopHud {
 		g.drawRect(700, 15, healthBarWidth, 30);
 		g.setFont(font);
 		g.setColor(color1);
-		if (state != STATE.Coop) {
-			g.drawString("Score: " + score, 300, 115);
-		} else {
-			g.drawString("Vote Count: " + voteCount, 700, 115);
-		}
+		
 	}
 
 	public void setAbility(String ability) {
