@@ -12,7 +12,7 @@ import java.awt.Rectangle;
  *
  */
 
-public class EnemyFBI extends GameObject {
+public class EnemyCombination extends GameObject {
 
 	private Handler handler;
 	private GameObject player, player2, server; 
@@ -24,7 +24,7 @@ public class EnemyFBI extends GameObject {
 	private double bulletVelY;
 	private int bulletSpeed; //speed at which bullets are fired
 
-	public EnemyFBI(double x, double y, int speed, int bulletSpeed, ID id, Handler handler) {
+	public EnemyCombination(double x, double y, int speed, int bulletSpeed, ID id, Handler handler) {
 	
 		
 		super(x, y, id);
