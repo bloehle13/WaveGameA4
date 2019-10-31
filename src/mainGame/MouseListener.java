@@ -215,15 +215,15 @@ public class MouseListener extends MouseAdapter {
 		}
 
 		else if (game.gameState == STATE.Menu) {
+			int counter = 0;
 			// Waves Button
 			if (mouseOver(mx, my, 190, 270, 720, 50)) {
 				Thread thread = new Thread(new Sound(), "menuSelect");
 				thread.start();
-				handler.object.clear();
+				//handler.object.clear();
 				game.gameState = STATE.Game;
 				handler.addObject(player);
 				hud.setWave(true);
-
 			}
 
 			// Attack Button

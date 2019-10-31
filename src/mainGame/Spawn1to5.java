@@ -44,10 +44,9 @@ public class Spawn1to5 {
 		hud2.setScore(0);
 		hud.setLevel(1);
 		spawnTimer = 10;
-		voteTimer = 20;
 		levelTimer = 150;
 		levelsRemaining = 5;
-		hud.setLevel(1);
+		//remove repetitive level set
 		tempCounter = 0;
 		addLevels();
 		index = r.nextInt(levelsRemaining);
@@ -97,6 +96,7 @@ public class Spawn1to5 {
 				tempCounter++;// ensures the method is only called once
 				if(hud.health <= 2000) {
 					handler.addPickup(new IncreaseHealthPickup(ID.IncreaseHealthPickup, handler));
+					spawnTimer = 40;
 				}
 			}
 			
@@ -128,8 +128,8 @@ public class Spawn1to5 {
 				spawnTimer--;
 				levelTimer--;
 				if (tempCounter < 1) {
-					//handler.addPickup(new PickupVote(ID.Vote, handler));
 					levelTimer = 2000;
+					spawnTimer = 40;
 					tempCounter++;
 					if(hud.health <=5990) {
 						handler.addPickup(new IncreaseHealthPickup(ID.IncreaseHealthPickup, handler));
@@ -174,6 +174,7 @@ public class Spawn1to5 {
 				if (tempCounter < 1) {
 					levelTimer = 1500;
 					tempCounter++;
+					spawnTimer = 40;
 					if(hud.health <=6550) {
 						handler.addPickup(new IncreaseHealthPickup(ID.IncreaseHealthPickup, handler));
 					}
@@ -205,6 +206,7 @@ public class Spawn1to5 {
 				if (tempCounter < 1) {
 					handler.addObject(new EnemyShooter(r.nextInt(Game.WIDTH) - 35, r.nextInt(Game.HEIGHT) - 75, 100, 100,
 							-20, ID.EnemyShooter, this.handler));
+					spawnTimer = 40;
 					if (hud.health <= 50){
 						handler.addPickup(new SharkHealth(ID.SharkHealth, handler));
 					} else {
@@ -237,6 +239,7 @@ public class Spawn1to5 {
 				levelTimer--;
 				if (tempCounter < 1) {
 					levelTimer = 1400;
+					spawnTimer = 40;
 					tempCounter++;
 					
 					handler.addPickup(new DecreaseSpeedPickup(ID.DecreaseSpeedPickup, handler));
@@ -312,7 +315,7 @@ public class Spawn1to5 {
 	}
 
 	public void restart() {
-		levelNumber = -10;
+		levelNumber = 0;
 		tempCounter = 0;
 		levelTimer = 150;
 		levelsRemaining = 10;
