@@ -289,7 +289,7 @@ public class Game extends Canvas implements Runnable {
 		// Screen size debug printout
 		System.out.println("Screensize: " + screenSize);
 		// Plays background music
-		Thread thread = new Thread(new Sound(), "music");
+		Thread thread = new Thread(new Sound(), "GameMusic");
 		thread.start();
 
 	}

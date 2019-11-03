@@ -36,7 +36,7 @@ public class HUD {
 	private Color scoreColor = Color.black;
 	private int extraLives = 0;
 	private STATE state = null;
-	private int hillarySpeedX = 20; // tracks speeds of hillary boss
+	private int hillarySpeedX = 20;
 	private int hillarySpeedY = 20;
 	
 	public void tick() {
@@ -73,12 +73,12 @@ public class HUD {
 		
 		g.setFont(font2);
 		g.setColor(Color.black);
-		g.drawString("Score:" + score, 50, 100);
+		g.drawString("Score: " + score, 50, 100);
 		
 		if (isBoss == false) {
 		g.drawString("Level: " + level, 475, 45);
 		} else {
-			g.drawString("" + boss, 15, 150);
+			g.drawString("   " + boss, 15, 150);
 		}
 	}
 

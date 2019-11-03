@@ -206,7 +206,7 @@ public class Spawn1to5 {
 					handler.addObject(new EnemyShooter(r.nextInt(Game.WIDTH) - 35, r.nextInt(Game.HEIGHT) - 75, 100, 100,
 							-20, ID.EnemyShooter, this.handler));
 					if (hud.health <= 50){
-						handler.addPickup(new SharkHealth(ID.SharkHealth, handler));
+						handler.addPickup(new IncreaseHealthPickup(ID.IncreaseHealthPickup, handler));
 					} else {
 						handler.addPickup(new DecreaseHealthPickup(ID.DecreaseHealthPickup, handler));
 					}
