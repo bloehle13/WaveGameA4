@@ -257,7 +257,6 @@ public class AttackSpawn {
 				if (pickupTimer2 == 0) {
 					pickupTimer--;
 
-					handler.addPickup(new NukePickup(ID.NukePickup, handler));
 
 					if (pickupTimer == 0) {
 						handler.pickups.clear();
@@ -292,7 +291,6 @@ public class AttackSpawn {
 			if (pickupTimer2 == 0) {
 				pickupTimer--;
 
-				handler.addPickup(new NukePickup(ID.NukePickup, handler));
 
 				if (pickupTimer == 0) {
 					handler.pickups.clear();
@@ -386,7 +384,6 @@ public class AttackSpawn {
 				if (pickupTimer2 == 0) {
 					pickupTimer--;
 
-					handler.addPickup(new NukePickup(ID.NukePickup, handler));
 
 					if (pickupTimer == 0) {
 						handler.pickups.clear();

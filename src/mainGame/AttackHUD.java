@@ -27,7 +27,7 @@ public class AttackHUD {
 	private int healthBarModifier = 2;
 	private int abilityUses;
 	private Color scoreColor = Color.white;
-	private int ammo = 360;
+	private int ammo = 365;
 	private int mag = 360;
 	
 	public void tick() {
