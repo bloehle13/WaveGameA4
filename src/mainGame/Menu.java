@@ -33,6 +33,11 @@ public class Menu {
 	private Handler handler;
 	private HUD hud;
 	private BufferedImage img;
+	private Image fish;
+	private Image title;
+	private Image shell;
+	private int fishPos;
+	private int fishPosY;
 	private int timer;
 	private Random r;
 	private ArrayList<Color> colorPick = new ArrayList<Color>();
@@ -40,12 +45,18 @@ public class Menu {
 	private Spawn1to5 spawner;
 	public Image image,image2;
 
+	
 	public Menu(Game game, Handler handler, HUD hud, Spawn1to5 spawner) {
+		fish = getImage("images/TrumpImage.png");
+		title = getImage("images/title.png");
+		shell = getImage("images/seashell.png");
 		this.game = game;
 		this.handler = handler;
 		this.hud = hud;
 		this.spawner = spawner;
 		timer = 10;
+		fishPos = 0;
+		fishPosY = 300;
 		r = new Random();
 		addColors();
 		//Old method to read images *Changed since does not support gifs!*
@@ -64,8 +75,8 @@ public class Menu {
 ;	    //image = new ImageIcon("images/background2.gif").getImage();
 	    
 	    //removed fireworks
-		//handler.addObject(new MenuFireworks((r.nextInt(Game.WIDTH) - 25), 500, 50, 50, 0, -2,
-		//	colorPick.get(r.nextInt(6)), ID.Firework, this.handler));
+		handler.addObject(new MenuFireworks((r.nextInt(Game.WIDTH) - 25), 500, 50, 50, 0, -2,
+		colorPick.get(r.nextInt(6)), ID.Firework, this.handler));
 	}
 
 	public Image getImage(String path) {
@@ -93,18 +104,32 @@ public class Menu {
 
 	public void tick() {
 		timer--;
+		fishPos = fishPos + 20;
+		if (fishPos >= 1100) {
+			fishPos = -600;
+			if (fishPosY >= 40) {
+			fishPosY = fishPosY/2;
+			} else {
+				fishPosY = 300;
+			}
+			}
+		
 		if (timer <= 0) {
 			handler.object.clear();
-			colorIndex = r.nextInt(6);
+			//colorIndex = r.nextInt(6);
 			//Removed fireworks
-			//handler.addObject(new MenuFireworks((r.nextInt(Game.WIDTH) - 25), 1080, 100, 100, 0, -4,
-			//colorPick.get(colorIndex), ID.Firework, this.handler));
+			handler.addObject(new MenuFireworks((r.nextInt(Game.WIDTH) - 25), 1080, 100, 100, 0, -4,
+			colorPick.get(colorIndex), ID.Firework, this.handler));
 			timer = 300;
 		}
 		handler.tick();
 	}
 
 	public void render(Graphics g) {
+		g.drawImage(fish, fishPos ,fishPosY , 162, 108, null);
+		g.drawImage(shell, 100 , 70 , 300, 200, null);
+		g.drawImage(title, 150 , 50 , 776, 265, null);
+		
 		if (game.gameState == STATE.Menu) {
 			
 			handler.render(g);
@@ -113,12 +138,18 @@ public class Menu {
 			Font font2 = new Font("Roboto", 1, 30);
 			Color color1 = new Color(255, 255, 225);
 			Color color2 = new Color(0, 133, 180);
-			Color color3 = new Color(0, 173, 209);	
+
+			//Color color3 = new Color(0, 173, 209);
+
+
+
+		//	Color color3 = new Color(0, 173, 209);	
 			
 			//Wave Game Image
-			g.drawImage(image, 190, 100, 720, 100, null);
+		//	g.drawImage(image, 190, 100, 720, 100, null);
 			
 			//Game Modes
+
 			g.setFont(font);
 			g.setColor(color1);
 			g.drawString("GAME MODES", 420, 250);

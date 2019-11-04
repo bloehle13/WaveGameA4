@@ -114,7 +114,6 @@ public class Spawn15to20 {
 				levelTimer--;
 				voteTimer--;
 				if (tempCounter < 1) {
-					handler.addPickup(new NRABonusLife(ID.NRABonusLife, handler));
 					levelTimer = 2000;
 					tempCounter++;
 				}
@@ -186,7 +185,7 @@ public class Spawn15to20 {
 							-20, ID.EnemyShooter, this.handler));
 
 					if (hud.health <= 50){
-						handler.addPickup(new SharkHealth(ID.SharkHealth, handler));
+						handler.addPickup(new IncreaseHealthPickup(ID.IncreaseHealthPickup, handler));
 					} else {
 						handler.addPickup(new DecreaseHealthPickup(ID.DecreaseHealthPickup, handler));
 					}
@@ -249,10 +248,9 @@ public class Spawn15to20 {
 				tempCounter++;
 				
 				if (hud.health <= 60 && hud.health > 30) {
-					handler.addPickup(new SharkHealth(ID.SharkHealth, handler));
+					handler.addPickup(new IncreaseHealthPickup(ID.IncreaseHealthPickup, handler));
 				}
 				if (hud.health <= 30 && hud.health > 20) {
-					handler.addPickup(new NRABonusLife(ID.NRABonusLife, handler));
 				}
 				if (hud.health <= 20) {
 					handler.addPickup(new IncreaseSpeedPickup(ID.IncreaseSpeedPickup, handler));

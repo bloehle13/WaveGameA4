@@ -99,8 +99,10 @@ public class KeyInput extends KeyAdapter {
 			upgrades.levelSkipAbility();
 		}
 		
-		if (key == KeyEvent.VK_ENTER && attackHUD.getAmmo() == 0) {
+		if (key == KeyEvent.VK_ENTER && attackHUD.getAmmo() < 360) {
 			attackHUD.setAmmo(360);
+			Thread thread = new Thread(new Sound(), "ReloadNoise");
+			thread.start();
 		}
 		
 		}
