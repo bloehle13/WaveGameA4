@@ -94,17 +94,9 @@ public class Spawn5to10 {
 				tempCounter++;// ensures the method is only called once
 			}
 			
-			//voteTimer spawns another vote after the timer reaches 0
-			if (game.gameState == STATE.Coop) {
-				if (voteTimer == 0) {
-					handler.addPickup(new PickupVote(ID.Vote, handler));
-					voteTimer = timer;
-				}
-			}
-			
 			if (spawnTimer == 0) {// time to spawn another enemy
 				handler.addObject(
-				new EnemyFBI(r.nextInt(Game.WIDTH), r.nextInt(Game.HEIGHT), -4, -10, ID.EnemyFBI, handler));// add them to the handler, which handles all game objects
+				new EnemyCombination(r.nextInt(Game.WIDTH), r.nextInt(Game.HEIGHT), -4, -10, ID.EnemyCombination, handler));// add them to the handler, which handles all game objects
 
 				spawnTimer = 100;// reset the spawn timer
 			}
@@ -131,12 +123,7 @@ public class Spawn5to10 {
 					levelTimer = 2000;
 					tempCounter++;
 				}
-				if (game.gameState == STATE.Coop) {
-					if (voteTimer == 0) {
-						handler.addPickup(new PickupVote(ID.Vote, handler));
-						voteTimer = timer;
-					}
-				}
+				
 				if (spawnTimer == 30) {
 					handler.addObject(
 							new EnemySweep(r.nextInt(Game.WIDTH), r.nextInt(Game.HEIGHT), 25, 2, ID.EnemySweep, handler));
@@ -175,14 +162,9 @@ public class Spawn5to10 {
 					levelTimer = 1500;
 					tempCounter++;
 					
-					handler.addPickup(new NFLSpeed(ID.NFLSpeed, handler));
+					handler.addPickup(new DecreaseSpeedPickup(ID.DecreaseSpeedPickup, handler));
 				}
-				if (game.gameState == STATE.Coop) {
-					if (voteTimer == 0) {
-						handler.addPickup(new PickupVote(ID.Vote, handler));
-						voteTimer = timer;
-					}
-				}
+				
 				if (spawnTimer == 0) {
 					handler.addObject(new EnemyDash(r.nextInt(Game.WIDTH), r.nextInt(Game.HEIGHT), -7, ID.EnemySmart, handler));
 					spawnTimer = 100;
@@ -209,19 +191,13 @@ public class Spawn5to10 {
 							-20, ID.EnemyShooter, this.handler));
 
 					if (hud.health <= 50){
-						handler.addPickup(new PutinHealth(ID.PutinHealth, handler));
+						handler.addPickup(new IncreaseHealthPickup(ID.IncreaseHealthPickup, handler));
 					} else {
-						handler.addPickup(new EminemHealth(ID.EminemHealth, handler));
+						handler.addPickup(new DecreaseHealthPickup(ID.DecreaseHealthPickup, handler));
 					}
 
 					levelTimer = 1300;
 					tempCounter++;
-				}
-				if (game.gameState == STATE.Coop) {
-					if (voteTimer == 0) {
-						handler.addPickup(new PickupVote(ID.Vote, handler));
-						voteTimer = timer;
-					}
 				}
 
 				if (levelTimer == 0) {
@@ -246,14 +222,8 @@ public class Spawn5to10 {
 				if (tempCounter < 1) {
 					levelTimer = 1400;
 					tempCounter++;
-					handler.addPickup(new NRABonusLife(ID.NRABonusLife, handler));
 				}
-				if (game.gameState == STATE.Coop) {
-					if (voteTimer == 0) {
-						handler.addPickup(new PickupVote(ID.Vote, handler));
-						voteTimer = timer;
-					}
-				}
+				
 				if (spawnTimer <= 0) {
 					handler.addObject(new EnemyBurst(-200, 200, 40, 40, 200, side[r.nextInt(4)], ID.EnemyBurst, handler));
 					spawnTimer = 180;
@@ -283,19 +253,19 @@ public class Spawn5to10 {
 				tempCounter++;
 		
 				if (hud.health <= 60) {
-					handler.addPickup(new PutinHealth(ID.PutinHealth, handler));
+					handler.addPickup(new IncreaseHealthPickup(ID.IncreaseHealthPickup, handler));
 				} else {
-					handler.addPickup(new TwitterSpeed(ID.TwitterSpeed, handler));
+					handler.addPickup(new IncreaseSpeedPickup(ID.IncreaseSpeedPickup, handler));
 				}
 				
-				handler.addObject(new BossPong(10, 10, ID.BossPong, handler));
+				handler.addObject(new SquidBoss(10, 10, ID.SquidBoss, handler));
 				hud.setBossLevel("Boss Two");
 				hud.setBoss(true);
 		
 			} else if (tempCounter >= 1) {
 				for (int i = 0; i < handler.object.size(); i++) {
 					GameObject tempObject = handler.object.get(i);
-					if (tempObject.getId() == ID.BossPong) {
+					if (tempObject.getId() == ID.SquidBoss) {
 						if (tempObject.getHealth() <= 0) {
 							handler.removeObject(tempObject);
 							handler.pickups.clear();

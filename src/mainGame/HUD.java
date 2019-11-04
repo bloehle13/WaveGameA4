@@ -33,10 +33,10 @@ public class HUD {
 	private boolean doubleHealth = false;
 	private String ability = "";
 	private int abilityUses;
-	private Color scoreColor = Color.white;
+	private Color scoreColor = Color.black;
 	private int extraLives = 0;
 	private STATE state = null;
-	private int hillarySpeedX = 20; // tracks speeds of hillary boss
+	private int hillarySpeedX = 20;
 	private int hillarySpeedY = 20;
 	
 	public void tick() {
@@ -58,32 +58,27 @@ public class HUD {
 	public void render(Graphics g) {
 		Font font = new Font("Roboto", 1, 20);
 		Font font2 = new Font("Roboto", 1, 40);
-		Color color1 = new Color(0, 255, 255); // Blue
+		Color color1 = new Color(0, 133, 180); // Blue
 		Color color2 = new Color(255, 0, 255); // Pink
 
-		g.setColor(Color.GRAY);
+		g.setColor(color1);
 		g.fillRect(15, 15, healthBarWidth, 30);
 		g.setColor(new Color(75, (int) greenValue, 0));
-		g.fillRect((int) 15, (int) 15, (int) health *3, 30);
+		g.fillRect((int) 15, (int) 15, (int) health * 3, 30);
 		g.setColor(color1);
 		
 		g.drawRect(15, 15, healthBarWidth, 30);
 		g.setFont(font);
-		
-		g.setFont(font);
-		g.setColor(color1);
-		if (state != STATE.Coop) {
-			g.drawString("Score: " + score, 15, 100);
-		}else {
-			g.drawString("Vote Count: " + voteCount, 15, 115);
-		}
+		g.setColor(Color.black);
 		
 		g.setFont(font2);
 		g.setColor(Color.black);
+		g.drawString("Score: " + score, 50, 100);
+		
 		if (isBoss == false) {
 		g.drawString("Level: " + level, 475, 45);
 		} else {
-			g.drawString("" + boss, 15, 150);
+			g.drawString("   " + boss, 15, 150);
 		}
 	}
 

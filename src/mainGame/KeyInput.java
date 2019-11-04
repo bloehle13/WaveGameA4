@@ -72,13 +72,8 @@ public class KeyInput extends KeyAdapter {
 		
 		for (int i = 0; i < handler.object.size(); i++) {
 			GameObject tempObject = handler.object.get(i);
-					// using only if's allows multiple keys to be triggered at once
-			if(game.gameState == STATE.Defense){
-				if (tempObject.getId() == ID.Player2) {// find the player object,
-					playerObject = tempObject;
-				}
-			}		
-			else if (tempObject.getId() == ID.Player) {// find the player object,
+					// using only if's allows multiple keys to be triggered at once		
+			if (tempObject.getId() == ID.Player) {// find the player object,
 						playerObject = tempObject;
 					}
 				
@@ -104,14 +99,16 @@ public class KeyInput extends KeyAdapter {
 			upgrades.levelSkipAbility();
 		}
 		
-		if (key == KeyEvent.VK_ENTER && attackHUD.getAmmo() == 0) {
+		if (key == KeyEvent.VK_ENTER && attackHUD.getAmmo() < 360) {
 			attackHUD.setAmmo(360);
+			Thread thread = new Thread(new Sound(), "ReloadNoise");
+			thread.start();
 		}
 		
 		}
 		//adding pause menu
 		if (key == KeyEvent.VK_ESCAPE) {
-			if (game.gameState == STATE.Game || game.gameState == STATE.Attack || game.gameState == STATE.Defense) {
+			if (game.gameState == STATE.Game || game.gameState == STATE.Attack) {
 				if(game.isPaused() == true){
 					game.unPause();
 				}
@@ -142,58 +139,6 @@ public class KeyInput extends KeyAdapter {
 		
 		//finds what key strokes associate with Player
 		
-		if (game.gameState == STATE.Coop) {
-			// find the player object, as he is the only one the user can control 
-			if (playerObject.getId() == ID.Player) {
-				// key events for player 1
-				if (key == KeyEvent.VK_W) {
-					playerObject.setVelY(-(this.speed));
-					keyDown[0] = true;
-				}
-				if (key == KeyEvent.VK_A) {
-					playerObject.setVelX(-(this.speed));
-					keyDown[1] = true;
-				}
-				if (key == KeyEvent.VK_S) {
-					playerObject.setVelY(this.speed);
-					keyDown[2] = true;
-				}
-				if (key == KeyEvent.VK_D) {
-					playerObject.setVelX(this.speed);
-					keyDown[3] = true;
-					keyDown[4] = true;
-
-				}
-				if (key == KeyEvent.VK_SPACE) {
-					upgrades.levelSkipAbility();
-				}
-			}
-
-			// temp object tracks the keys for player 2 differently, alters
-			// the keydown2 array separately
-			if (playerObject.getId() == ID.Player2) {
-				if (key == KeyEvent.VK_UP) {
-					playerObject.setVelY(-(this.speed));
-					keyDown2[0] = true;
-				}
-				if (key == KeyEvent.VK_LEFT) {
-					playerObject.setVelX(-(this.speed));
-					keyDown2[1] = true;
-				}
-				if (key == KeyEvent.VK_DOWN) {
-					playerObject.setVelY(this.speed);
-					keyDown2[2] = true;
-				}
-				if (key == KeyEvent.VK_RIGHT) {
-					playerObject.setVelX(this.speed);
-					keyDown2[3] = true;
-					keyDown2[4] = true;
-
-				}
-			}
-			 	
-
-		}
 
 	}
 	
@@ -202,11 +147,8 @@ public class KeyInput extends KeyAdapter {
 	// finds what key strokes associate with Player
 	public void keyPressed(KeyEvent e) {
 		// finds for the which game mode 
-		if (game.gameState == STATE.Game || game.gameState == STATE.Attack || game.gameState == STATE.Defense) {
+		if (game.gameState == STATE.Game || game.gameState == STATE.Attack) {
 			movement(e); //
-		if(game.gameState == STATE.Coop) {
-			moveCoop(e);
-			}
 		}
 	}	
 	
@@ -217,7 +159,7 @@ public class KeyInput extends KeyAdapter {
 
 		for (int i = 0; i < handler.object.size(); i++) {
 			GameObject playerObject = handler.object.get(i);
-			if (game.gameState == STATE.Game || game.gameState == STATE.Attack || game.gameState == STATE.Defense) {
+			if (game.gameState == STATE.Game || game.gameState == STATE.Attack) {
 				if (playerObject.getId() == ID.Player || playerObject.getId() == ID.Player2) {
 					// key events for player 1
 					if (key == KeyEvent.VK_W || key == KeyEvent.VK_UP)

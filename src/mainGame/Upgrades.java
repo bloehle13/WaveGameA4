@@ -9,6 +9,7 @@ import mainGame.Game.STATE;
  *
  */
 
+
 public class Upgrades {
 
 	private Game game;
@@ -142,13 +143,13 @@ public class Upgrades {
 
 	}
 
-	public void resetUpgrades() {
+	/*public void resetUpgrades() {
 		Player.playerSpeed = 10;
 		hud.resetHealth();
 		hud.resetRegen();
 		hud.setExtraLives(0);
 		player.setPlayerSize(32);
 		upgradeScreen.resetPaths();
-	}
+	}*/
 
 }

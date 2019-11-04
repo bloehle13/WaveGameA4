@@ -96,7 +96,7 @@ public class MouseListener extends MouseAdapter {
 		if (game.gameState == STATE.GameOver) {
 			handler.object.clear();
 			handler.pickups.clear();
-			upgrades.resetUpgrades();
+			//upgrades.resetUpgrades();
 			hud.health = 100;
 			player.playerSpeed = 10;
 			hud.setScore(0);
@@ -111,12 +111,12 @@ public class MouseListener extends MouseAdapter {
 			attackSpawn.restart();
 			spawner.restart();
 			spawner.addLevels();
-			spawner2.restart();
-			spawner2.addLevels();
-			spawner3.restart();
-			spawner3.addLevels();
-			spawner4.restart();
-			spawner4.addLevels();
+			//spawner2.restart();
+			//spawner2.addLevels();
+			//spawner3.restart();
+			//spawner3.addLevels();
+			//spawner4.restart();
+			//spawner4.addLevels();
 			hud.resetVote();
 			hud.setState(STATE.Menu);
 			hud2.resetVote();
@@ -132,14 +132,12 @@ public class MouseListener extends MouseAdapter {
 			player.setShooting(false);
 			attackHUD.setAttack(false);
 			hud.setWave(false);
-			hud2.setCoop(false);
-			serverHUD.setServer(false);
 		}
 		
 		else if (game.gameState == STATE.Victory){
 			handler.object.clear();
 			handler.pickups.clear();
-			upgrades.resetUpgrades();
+			//upgrades.resetUpgrades();
 			hud.health = 100;
 			player.playerSpeed = 10;
 			hud.setScore(0);
@@ -166,16 +164,12 @@ public class MouseListener extends MouseAdapter {
 					this.attackHUD, this.serverHUD, game);
 			player2 = new Player(width / 2 + 100, height / 2 - 32, ID.Player2, handler, this.hud, this.hud2,
 					this.attackHUD, this.serverHUD, game);
-			Spawn1to5.LEVEL_SET = 1;
+			Spawn1to5.LEVEL_SET = (int) (Math.random() * 5);
 			game.gameState = STATE.Menu;
 			hud.setBoss(false);
 			attackHUD.setBoss(false);
 			attackHUD.setAttack(false);
 			player.setShooting(false);
-		}
-
-		else if (game.gameState == STATE.Game) {
-
 		}
 
 		else if (game.gameState == STATE.Upgrade) {
@@ -213,6 +207,8 @@ public class MouseListener extends MouseAdapter {
 						((player.getX() - mx) * (player.getX() - mx)) + ((player.getY() - my) * (player.getY() - my)));
 				bulletX = ((this.bulletSpeed / distance) * diffX);
 				bulletY = ((this.bulletSpeed / distance) * diffY);
+				Thread thread = new Thread(new Sound(), "ShootingNoise");
+				thread.start();
 				
 				player.setBulletX(bulletX);
 				player.setBulletY(bulletY);
@@ -221,64 +217,43 @@ public class MouseListener extends MouseAdapter {
 		}
 
 		else if (game.gameState == STATE.Menu) {
+			int counter = 0;
 			// Waves Button
 			if (mouseOver(mx, my, 190, 270, 720, 50)) {
-				Thread thread = new Thread(new Sound(), "menuSelect");
+				Thread thread = new Thread(new Sound(), "MenuSelectNoise");
 				thread.start();
-				handler.object.clear();
+				//handler.object.clear();
 				game.gameState = STATE.Game;
 				handler.addObject(player);
 				hud.setWave(true);
-
-			}
-			// Coop Button
-			else if (mouseOver(mx, my, 190, 330, 720, 50)) {
-				Thread thread = new Thread(new Sound(), "menuSelect");
-				thread.start();
-				handler.object.clear();
-				game.gameState = STATE.Coop;
-				handler.addObject(player);
-				handler.addObject(player2);
-				hud2.setCoop(true);
 			}
 
 			// Attack Button
 			else if (mouseOver(mx, my, 190, 450, 720, 50)) {
-				Thread thread = new Thread(new Sound(), "menuSelect");
+				Thread thread = new Thread(new Sound(), "MenuSelectNoise");
 				thread.start();
 				handler.object.clear();
 				game.gameState = STATE.Attack;
 				handler.addObject(player);
 				attackHUD.setAttack(true);
 			}
-			
-			// Server Defense Button
-			else if (mouseOver(mx, my, 190, 390, 720, 50)) /*margin-left, margin-top, width, height*/ {
-				Thread thread = new Thread(new Sound(), "menuSelect");
-				thread.start();
-				handler.object.clear();
-				game.gameState = STATE.Defense;
-				handler.addObject(player2);
-				handler.addObject(server);
-				serverHUD.setServer(true);
-			}
 
 			// Help Button
 			else if (mouseOver(mx, my, 190, 550, 220, 80)) {
-				Thread thread = new Thread(new Sound(), "menuSelect");
+				Thread thread = new Thread(new Sound(), "MenuSelectNoise");
 				thread.start();
 				game.gameState = STATE.Help;
 			}
 
 			// Credits
 			else if (mouseOver(mx, my, 440, 550, 220, 80)) {
-				Thread thread = new Thread(new Sound(), "menuSelect");
+				Thread thread = new Thread(new Sound(), "MenuSelectNoise");
 				thread.start();
 				JOptionPane.showMessageDialog(game,
 						"Game made by Brandon Loehle in 2016." 
-								+ "\n\nContributions of debugging and enhancements made by Kyle Horton, Rob Laudadio, Ryan Hanlon, "
-								+ "Eric Kinney and Kevin Maeder for"
-								+ "SER225 fall semester 2017."
+								+ "\n\nContributions of debugging and enhancements made by Jake Galiano, Nikolai Orekhov, Drew Willaims, "
+								+ "and Josh Tickey for "
+								+ "SER 225 in the fall 2019 semester."
 								+ "\n\nThis game has minor bugs. However,"
 								+ " it is 100% playable, enjoy!");
 			}

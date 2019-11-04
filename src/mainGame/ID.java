@@ -8,11 +8,11 @@ package mainGame;
 public enum ID {
 
 	Player,
-	Player2,  //make capital P
+	Player2(),
 	Trail(),
 	BossEye(),
 	EnemyFast(),
-	EnemyFBI(),
+	EnemyCombination(),
 	EnemySmart(),
 	EnemyBoss(),
 	EnemyBossBullet(),
@@ -26,20 +26,16 @@ public enum ID {
 	CircleTrail(),
 	Levels1to5Text(),
 	EnemyBasic(),
-	PutinHealth(),
-	NRABonusLife(),
-	EminemHealth(),
-	TwitterSpeed(),
-	NFLSpeed(),
-	BossPong(),
-	HillaryBoss(),
-	HillaryEmail(),
-	Vote(),
+	DecreaseHealthPickup(),
+	IncreaseSpeedPickup(),
+	DecreaseSpeedPickup(),
+	SquidBoss(),
+	SealBoss(),
+	CoinPickup(),
 	PlayerBullets(),
 	Server(),
 	SmartBoss(),
 	AmmoPickup(),
-	HealthPowerUp(),
-	NukePickup();
+	IncreaseHealthPickup(),
 	
 }

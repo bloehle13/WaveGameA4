@@ -29,7 +29,7 @@ public class EnemyBoss extends GameObject {
 		this.handler = handler;
 		velX = 0;
 		velY = 2;
-		img = getImage("images/CNNImage.png");
+		img = getImage("images/JellyFish.png");
 		this.health = 1000;//full health is 1000
 	}
 
@@ -79,7 +79,6 @@ public class EnemyBoss extends GameObject {
 
 	public void render(Graphics g) {
 		g.setColor(Color.LIGHT_GRAY);
-		g.drawLine(0, 138, Game.WIDTH, 138);
 		g.drawImage(img, (int) this.x, (int) this.y, 120, 120, null);
 
 		// HEALTH BAR

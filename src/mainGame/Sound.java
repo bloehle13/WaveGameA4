@@ -28,33 +28,39 @@ public class Sound implements Runnable {
 	public void run() {
 
 		// If loops determine which noise to play
-		if (Thread.currentThread().getName() == "music") {
+		if (Thread.currentThread().getName() == "GameMusic") {
 			System.out.println("Background Music Triggered");
-			file = new File("Sound/neonDrive.wav");
-		} else if (Thread.currentThread().getName() == "PutinHealth") {
-			System.out.println("Putin Noise Triggered");
-			file = new File("Sound/putinSound.wav");
-		} else if (Thread.currentThread().getName() == "EminemDecrease") {
-			System.out.println("Eminem Noise Triggered");
-			file = new File("Sound/slimShady.wav");
-		} else if (Thread.currentThread().getName() == "menuSelect") {
+			file = new File("Sound/GameMusic.wav");
+		} else if (Thread.currentThread().getName() == "IncreaseHealthPickupNoise") {
+			System.out.println("Increase Health Pickup Noise Triggered");
+			file = new File("Sound/IncreaseHealthPickupNoise.wav");
+		} else if (Thread.currentThread().getName() == "DecreaseHealthPickupNoise") {
+			System.out.println("Decrease Health Pickup Noise Triggered");
+			file = new File("Sound/DecreaseHealthPickupNoise.wav");
+		} else if (Thread.currentThread().getName() == "IncreaseSpeedPickupNoise") {
+			System.out.println("Increase Speed Pickup Noise Triggered");
+			file = new File("Sound/IncreaseSpeedPickupNoise.wav");
+		} else if (Thread.currentThread().getName() == "MenuSelectNoise") {
 			System.out.println("Menu Select Noise Triggered");
-			file = new File("Sound/menuSelect.wav");
+			file = new File("Sound/MenuSelectNoise.wav");
 		} else if (Thread.currentThread().getName() == "NFLSound") {
 			System.out.println("NFL Noise Triggered");
-			file = new File("Sound/nflTheme.wav");
-		} else if (Thread.currentThread().getName() == "reload") {
-			System.out.println("Reload Triggered");
-			file = new File("Sound/reloadNoise.wav");
-		} else if (Thread.currentThread().getName() == "death") {
-			System.out.println("Death Triggered");
-			file = new File("Sound/starwarsScream.wav");
-		} else if (Thread.currentThread().getName() == "shoot") {
-			System.out.println("Enemy shot with player bullet Sound ");
-			file = new File("Sound/laser.wav");
-		} else if (Thread.currentThread().getName() == "playerDamage") {
+			file = new File("Sound/NFLTheme.wav");
+		} else if (Thread.currentThread().getName() == "ShootingNoise") {
+			System.out.println("Shooting Noise Triggered");
+			file = new File("Sound/PewPewNoise.wav");
+		} else if (Thread.currentThread().getName() == "ReloadNoise") {
+			System.out.println("Reload Noise Triggered");
+			file = new File("Sound/ReloadNoise.wav");
+		} else if (Thread.currentThread().getName() == "DeathNoise") {
+			System.out.println("Death Noise Triggered");
+			file = new File("Sound/StarWarsScream.wav");
+		} else if (Thread.currentThread().getName() == "EnemyDamageNoise") {
+			System.out.println("Enemy shot with player bullet Noise Triggered ");
+			file = new File("Sound/EnemyDamageNoise.wav");
+		} else if (Thread.currentThread().getName() == "PlayerDamage") {
 			System.out.println("player hit by enemy sound");
-			file = new File("Sound/playerHit.wav");
+			file = new File("Sound/PlayerDamaged.wav");
 		}
 
 		// This is where file is read in
@@ -62,23 +68,23 @@ public class Sound implements Runnable {
 		try {
 			audioIn = AudioSystem.getAudioInputStream(file);
 		} catch (UnsupportedAudioFileException | IOException e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 		clip = null;
 		try {
 			clip = AudioSystem.getClip();
 		} catch (LineUnavailableException e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 		try {
 			clip.open(audioIn);
 		} catch (LineUnavailableException | IOException e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 
 		// Increases volume of all sound files except background music
 		// More parameters can be added to this
-		if (Thread.currentThread().getName() != "music") {
+		if (Thread.currentThread().getName() != "GameMusic") {
 			FloatControl gainControl = (FloatControl) clip
 					.getControl(FloatControl.Type.MASTER_GAIN);
 			gainControl.setValue(6.0f);
@@ -89,7 +95,7 @@ public class Sound implements Runnable {
 		clip.start();
 
 		// Changes loop amount to infinite if it is background music
-		if (Thread.currentThread().getName() == "music") {
+		if (Thread.currentThread().getName() == "GameMusic") {
 			clip.loop(Clip.LOOP_CONTINUOUSLY);
 		}
 		try {
@@ -108,10 +114,4 @@ public class Sound implements Runnable {
 		}
 
 	}
-	
-	public void playEndMusic() {
-		Thread thread = new Thread(new Sound(), "comradeVictory");
-		thread.start();
-	}
-
 }

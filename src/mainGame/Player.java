@@ -56,14 +56,16 @@ public class Player extends GameObject {
 		bulletY = 0;
 		shooting = true;
 		timer = 60;
-//********* CHANGE HERE FOR NEW CHAR 
-		img = getImage("images/TrumpImage.png");
 		voteCount = 0;
-		playerDamaged = getImage("images/playerDamaged.png");
+
+		playerDamaged = getImage("images/PlayerDamaged.png");
+
+//********* CHANGE HERE FOR NEW PLAYER IMAGE
+		
+
 		if (this.id == ID.Player){
-			img = getImage("images/TrumpImage.png");
-		} else if (this.id == ID.Player2){
-			img = getImage("images/HillaryImage.png");
+	
+			img = getImage("images/PurpleFish.png");
 		}
 		takingDamageTimer = 0;
 
@@ -72,7 +74,7 @@ public class Player extends GameObject {
 	@Override
 	public void tick() {
 		if (takingDamage == true) {
-			Thread thread = new Thread(new Sound(), "playerDamage");
+			Thread thread = new Thread(new Sound(), "PlayerDamage");
 			thread.start();
 
 		}
@@ -96,8 +98,6 @@ public class Player extends GameObject {
 		}
 		if (game.gameState == STATE.Game)
 			checkIfDead();
-		if (game.gameState == STATE.Coop)
-			checkIfDeadCoop();
 		if (game.gameState == STATE.Attack) {
 			checkIfDeadAttack();
 
@@ -116,7 +116,7 @@ public class Player extends GameObject {
 	public void checkIfDead() {
 		if (hud.health <= 0) {// player is dead, game over!
 			if (hud.getExtraLives() == 0) {
-				Thread thread = new Thread(new Sound(), "death");
+				Thread thread = new Thread(new Sound(), "DeathNoise");
 				thread.start();
 				game.renderGameOver();
 				game.getGameOver().setWhoDied(0);
@@ -195,8 +195,8 @@ public class Player extends GameObject {
 					|| tempObject.getId() == ID.EnemySmart || tempObject.getId() == ID.EnemyBossBullet
 					|| tempObject.getId() == ID.EnemySweep || tempObject.getId() == ID.EnemyShooterBullet
 					|| tempObject.getId() == ID.EnemyBurst || tempObject.getId() == ID.EnemyShooter
-					|| tempObject.getId() == ID.BossEye || tempObject.getId() == ID.HillaryBoss
-					|| tempObject.getId() == ID.EnemyFBI || tempObject.getId() == ID.SmartBoss || tempObject.getId() == ID.BossPong) {// tempObject
+					|| tempObject.getId() == ID.BossEye || tempObject.getId() == ID.CoinPickup
+					|| tempObject.getId() == ID.EnemyCombination || tempObject.getId() == ID.SmartBoss || tempObject.getId() == ID.SquidBoss) {// tempObject
 																									// is
 																									// an
 																									// enemy
@@ -205,7 +205,7 @@ public class Player extends GameObject {
 
 				if (getBounds().intersects(tempObject.getBounds())) {// player
 																		// hit
-					System.out.println("Colliding");												// an
+																		// an
 																		// enemy
 					if (this.id == ID.Player) {
 						System.out.println("Colliding With Player");
@@ -245,7 +245,7 @@ public class Player extends GameObject {
 		// if player does, affect player, remove item from array
 		for (int i = 0; i < handler.pickups.size(); i++) {
 			Pickup tempObject = handler.pickups.get(i);
-			if (tempObject.getId() == ID.HealthPowerUp) {
+			if (tempObject.getId() == ID.IncreaseHealthPickup) {
 				if (getBounds().intersects(tempObject.getBounds())) {
 
 					if (hud.health >= 60) {
@@ -259,13 +259,13 @@ public class Player extends GameObject {
 					// Each sound effect is the same except for which string is
 					// called
 													////*********CHAR CHANGE
-					Thread thread = new Thread(new Sound(), "PutinHealth");
+					Thread thread = new Thread(new Sound(), "IncreaseHealthPickupNoise");
 					thread.start();
 
 				}
 
 			}                /// *****NEED TO CHANGE FOR CHAR ------
-			if (tempObject.getId() == ID.EminemHealth) {
+			if (tempObject.getId() == ID.DecreaseHealthPickup) {
 				if (getBounds().intersects(tempObject.getBounds())) {
 
 					if (hud.health <= 40) {
@@ -276,32 +276,22 @@ public class Player extends GameObject {
 					}
 					handler.removePickup(tempObject);
 															/// *****CHANGE 
-					Thread thread = new Thread(new Sound(), "EminemDecrease");
+					Thread thread = new Thread(new Sound(), "DecreaseHealthPickupNoise");
 					thread.start();
 
 				}
 			}						/// *****CHANGE 
-			if (tempObject.getId() == ID.TwitterSpeed) {
+			if (tempObject.getId() == ID.IncreaseSpeedPickup) {
 				if (getBounds().intersects(tempObject.getBounds())) {
 					playerSpeed = 20;
 					handler.removePickup(tempObject);
-					Thread thread = new Thread(new Sound(), "twitterNoise");
+					Thread thread = new Thread(new Sound(), "IncreaseSpeedPickupNoise");
 					thread.start();
 				}
-			}							/// *****CHANGE 
-			if (tempObject.getId() == ID.NRABonusLife){
-				if (getBounds().intersects(tempObject.getBounds())){
-					if (this.id == ID.Player){
-						
-						hud.setExtraLives(hud.getExtraLives() + 1);
-						handler.removePickup(tempObject);
-					} else {
-						hud2.setExtraLives(hud2.getExtraLives() + 1);
-						handler.removePickup(tempObject);
-					}
-				}
-			}						/// *****CHANGE 
-			if (tempObject.getId() == ID.NFLSpeed) {
+			}		
+	 
+									/// *****CHANGE 
+			if (tempObject.getId() == ID.DecreaseSpeedPickup) {
 				if (getBounds().intersects(tempObject.getBounds())) {
 					playerSpeed = 5;
 					handler.removePickup(tempObject);
@@ -311,37 +301,13 @@ public class Player extends GameObject {
 				}
 			}
 									/// *****CHANGE 
-			if (tempObject.getId() == ID.HillaryEmail) {
+			if (tempObject.getId() == ID.CoinPickup) {
 				if (getBounds().intersects(tempObject.getBounds())) {
 					
 					hud.setHillaryX(hud.getHillaryX() - 2);
 					hud.setHillaryY(hud.getHillaryY() - 2);
 
 					handler.removePickup(tempObject);
-				}
-			}
-			/// *****CHANGE 
-			if (tempObject.getId() == ID.Vote) {
-				if (getBounds().intersects(tempObject.getBounds())) {
-					if (this.id == ID.Player)
-						hud.updateVote();
-					if (this.id == ID.Player2)
-						hud2.updateVote();
-					handler.removePickup(tempObject);
-				}
-			}
-			if (tempObject.getId() == ID.AmmoPickup) {
-				if (getBounds().intersects(tempObject.getBounds())) {
-					attackHUD.setMag(360);
-					handler.removePickup(tempObject);
-				}
-			}
-
-			if (tempObject.getId() == ID.NukePickup) {
-				if (getBounds().intersects(tempObject.getBounds())) {
-					handler.clearSmartEnemy();
-					handler.removePickup(tempObject);
-
 				}
 			}
 		}
