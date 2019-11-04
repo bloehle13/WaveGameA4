@@ -80,9 +80,9 @@ public class Game extends Canvas implements Runnable {
 		hud2 = new CoopHud();
 		attackHUD = new AttackHUD();
 		spawner = new Spawn1to5(this.handler, this.hud, this.hud2, this);
-		//spawner2 = new Spawn5to10(this.handler, this.hud, this.hud2, this.spawner, this);
-		//spawner3 = new Spawn10to15(this.handler, this.hud, this.hud2, this.spawner2, this);
-		//spawner4 = new Spawn15to20(this.handler, this.hud,this.hud2,this.spawner3, this);
+		spawner2 = new Spawn5to10(this.handler, this.hud, this.hud2, this.spawner, this);
+		spawner3 = new Spawn10to15(this.handler, this.hud, this.hud2, this.spawner2, this);
+		spawner4 = new Spawn15to20(this.handler, this.hud,this.hud2,this.spawner3, this);
 		attackSpawn = new AttackSpawn(this.handler, this.attackHUD, this);
 		menu = new Menu(this, this.handler, this.hud, this.spawner);
 		//upgradeScreen = new UpgradeScreen(this, this.handler, this.hud);
@@ -179,18 +179,15 @@ public class Game extends Canvas implements Runnable {
 			} else if (Spawn1to5.LEVEL_SET == 4){
 				spawner4.tick();
 			}
+			
 		} else if (gameState == STATE.Attack) {
 			attackHUD.tick();
 			attackSpawn.tick();
 
-		} else if (gameState == STATE.Menu || gameState == STATE.Help) {// user
-																		// is on
-																		// menu,
-																		// update
-																		// the
-																		// menu
-																		// items
+		} else if (gameState == STATE.Menu || gameState == STATE.Help) {
+			// user is on menu, update the menu items
 			menu.tick();
+			
 		} else if (gameState == STATE.Upgrade) {// user is on upgrade screen,
 												// update the upgrade screen
 			upgradeScreen.tick();
@@ -282,6 +279,44 @@ public class Game extends Canvas implements Runnable {
 		else
 			return var;
 	}
+	
+	public void reset() {
+		if(! isPaused()) {
+			handler.tick();// ALWAYS TICK HANDLER, NO MATTER IF MENU OR GAME SCREEN
+			if (gameState == STATE.Game) {// game is running
+				hud.tick();
+				if (Spawn1to5.LEVEL_SET == 1) {// user is on levels 1 thru 10,
+												// update them
+					spawner.tick();
+				} else if (Spawn1to5.LEVEL_SET == 2) {// user is on levels 10 thru
+														// 20, update them
+					spawner2.tick();
+				} else if (Spawn1to5.LEVEL_SET == 3){
+					spawner3.tick();
+				} else if (Spawn1to5.LEVEL_SET == 4){
+					spawner4.tick();
+				}
+				
+			} else if (gameState == STATE.Attack) {
+				attackHUD.tick();
+				attackSpawn.tick();
+
+			} else if (gameState == STATE.Menu || gameState == STATE.Help) {
+				// user is on menu, update the menu items
+				menu.tick();
+				
+			} else if (gameState == STATE.Upgrade) {// user is on upgrade screen,
+													// update the upgrade screen
+				upgradeScreen.tick();
+			} else if (gameState == STATE.GameOver) {// game is over, update the
+														// game over screen
+				gameOver.tick();
+			} else if (gameState == STATE.Victory){
+				victory.tick();
+			}
+		}
+		
+	}
 
 	public static void main(String[] args) {
 		new Game();
@@ -319,7 +354,7 @@ public class Game extends Canvas implements Runnable {
 	public void unPause() {
 		isPaused = false; 
 	}
-	public  boolean isPaused() {
+	public boolean isPaused() {
 		return isPaused;
 	}
 }

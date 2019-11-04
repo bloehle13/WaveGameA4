@@ -27,8 +27,9 @@ public class AttackHUD {
 	private int healthBarModifier = 2;
 	private int abilityUses;
 	private Color scoreColor = Color.white;
-	private int ammo = 365;
-	private int mag = 360;
+	private int ammo = 300;
+	private int mag = 300;
+
 	
 	public void tick() {
 		health = Game.clamp(health, 0, health);
@@ -46,13 +47,13 @@ public class AttackHUD {
 		g.fillRect(15, 15, healthBarWidth, 30);
 		g.setColor(new Color(75, (int) greenValue, 0));
 		g.fillRect((int) 15, (int) 15, (int) health *3, 30);
-		g.setColor(color1);
+		g.setColor(Color.black);
 		
 		g.drawRect(15, 15, healthBarWidth, 30);
 		g.setFont(font);
 		
 		g.drawString("Score: " + score, 15, 80);
-		g.setColor(color1);
+		g.setColor(Color.black);
 		
 		// switches display based on if player has ammo or needs to reload
 		if (ammo > 0){
