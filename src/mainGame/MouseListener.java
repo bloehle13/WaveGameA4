@@ -227,7 +227,7 @@ public class MouseListener extends MouseAdapter {
 			}
 
 			// Attack Button
-			else if (mouseOver(mx, my, 190, 450, 720, 50)) {
+			else if (mouseOver(mx, my, 190, 330, 720, 50)) {
 				Thread thread = new Thread(new Sound(), "menuSelect");
 				thread.start();
 				handler.object.clear();
