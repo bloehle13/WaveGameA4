@@ -90,17 +90,7 @@ public class Menu {
 		colorPick.get(r.nextInt(6)), ID.Firework, this.handler));
 	}
 
-	public Image getImage(String path) {
-		Image image = null;
-		try {
-			URL imageURL = Game.class.getResource(path);
-			image = Toolkit.getDefaultToolkit().getImage(imageURL);
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
-		}
-
-		return image;
-	}
+	
 
 	public void addColors() {
 		colorPick.add(Color.blue);
