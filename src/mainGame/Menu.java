@@ -45,17 +45,6 @@ public class Menu {
 	private Spawn1to5 spawner;
 	public Image image,image2;
 
-	public Image getImage(String path) {
-		Image image = null;
-		try {
-			URL imageURL = Game.class.getResource(path);
-			image = Toolkit.getDefaultToolkit().getImage(imageURL);
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
-		}
-
-		return image;
-	}
 	
 	public Menu(Game game, Handler handler, HUD hud, Spawn1to5 spawner) {
 		fish = getImage("images/TrumpImage.png");
@@ -162,26 +151,26 @@ public class Menu {
 			g.setColor(color1);
 			g.drawString("WAVES", 490, 307);
 
-			// Coop Button
+			// Attack Button
 			g.setColor(color1);
 			g.drawRect(190, 330, 720, 50);
 			g.setFont(font2);
 			g.setColor(color1);
-			g.drawString("CO-OP", 490, 365);
+			g.drawString("ATTACK", 490, 365);
 			
-			// Server Defense Button
-			g.setColor(color1);
-			g.drawRect(190, 390, 720, 50); //left margin, top margin, width, height 
-			g.setFont(font2);
-			g.setColor(color1);
-			g.drawString("SERVER DEFENSE", 410, 428);
-
-			// Attack Button
-			g.setColor(color1);
-			g.drawRect(190, 450, 720, 50);
-			g.setFont(font2);
-			g.setColor(color1);
-			g.drawString("ATTACK", 483, 487);
+//			// Server Defense Button
+//			g.setColor(color1);
+//			g.drawRect(190, 390, 720, 50); //left margin, top margin, width, height 
+//			g.setFont(font2);
+//			g.setColor(color1);
+//			g.drawString("SERVER DEFENSE", 410, 428);
+//
+//			// Attack Button
+//			g.setColor(color1);
+//			g.drawRect(190, 450, 720, 50);
+//			g.setFont(font2);
+//			g.setColor(color1);
+//			g.drawString("ATTACK", 483, 487);
 
 			// Help Button
 			g.setColor(color1);
