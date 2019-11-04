@@ -58,7 +58,7 @@ public class Player extends GameObject {
 		timer = 60;
 		voteCount = 0;
 
-		playerDamaged = getImage("images/playerDamaged.png");
+		playerDamaged = getImage("images/PlayerDamaged.png");
 
 //********* CHANGE HERE FOR NEW PLAYER IMAGE
 		
@@ -74,7 +74,7 @@ public class Player extends GameObject {
 	@Override
 	public void tick() {
 		if (takingDamage == true) {
-			Thread thread = new Thread(new Sound(), "playerDamage");
+			Thread thread = new Thread(new Sound(), "PlayerDamage");
 			thread.start();
 
 		}
@@ -116,7 +116,7 @@ public class Player extends GameObject {
 	public void checkIfDead() {
 		if (hud.health <= 0) {// player is dead, game over!
 			if (hud.getExtraLives() == 0) {
-				Thread thread = new Thread(new Sound(), "death");
+				Thread thread = new Thread(new Sound(), "DeathNoise");
 				thread.start();
 				game.renderGameOver();
 				game.getGameOver().setWhoDied(0);
@@ -205,7 +205,7 @@ public class Player extends GameObject {
 
 				if (getBounds().intersects(tempObject.getBounds())) {// player
 																		// hit
-					System.out.println("Colliding");												// an
+																		// an
 																		// enemy
 					if (this.id == ID.Player) {
 						System.out.println("Colliding With Player");
@@ -259,7 +259,7 @@ public class Player extends GameObject {
 					// Each sound effect is the same except for which string is
 					// called
 													////*********CHAR CHANGE
-					Thread thread = new Thread(new Sound(), "PutinHealth");
+					Thread thread = new Thread(new Sound(), "IncreaseHealthPickupNoise");
 					thread.start();
 
 				}
@@ -276,7 +276,7 @@ public class Player extends GameObject {
 					}
 					handler.removePickup(tempObject);
 															/// *****CHANGE 
-					Thread thread = new Thread(new Sound(), "EminemDecrease");
+					Thread thread = new Thread(new Sound(), "DecreaseHealthPickupNoise");
 					thread.start();
 
 				}
@@ -285,22 +285,12 @@ public class Player extends GameObject {
 				if (getBounds().intersects(tempObject.getBounds())) {
 					playerSpeed = 20;
 					handler.removePickup(tempObject);
-					Thread thread = new Thread(new Sound(), "twitterNoise");
+					Thread thread = new Thread(new Sound(), "IncreaseSpeedPickupNoise");
 					thread.start();
 				}
-			}							/// *****CHANGE 
-			if (tempObject.getId() == ID.NRABonusLife){
-				if (getBounds().intersects(tempObject.getBounds())){
-					if (this.id == ID.Player){
-						
-						hud.setExtraLives(hud.getExtraLives() + 1);
-						handler.removePickup(tempObject);
-					} else {
-						hud2.setExtraLives(hud2.getExtraLives() + 1);
-						handler.removePickup(tempObject);
-					}
-				}
-			}						/// *****CHANGE 
+			}		
+	 
+									/// *****CHANGE 
 			if (tempObject.getId() == ID.DecreaseSpeedPickup) {
 				if (getBounds().intersects(tempObject.getBounds())) {
 					playerSpeed = 5;
@@ -318,27 +308,6 @@ public class Player extends GameObject {
 					hud.setHillaryY(hud.getHillaryY() - 2);
 
 					handler.removePickup(tempObject);
-				}
-			}
-			/// *****CHANGE 
-			if (tempObject.getId() == ID.Vote) {
-				if (getBounds().intersects(tempObject.getBounds())) {
-					if (this.id == ID.Player)
-						hud.updateVote();
-			}
-			if (tempObject.getId() == ID.AmmoPickup) {
-				if (getBounds().intersects(tempObject.getBounds())) {
-					attackHUD.setMag(360);
-					handler.removePickup(tempObject);
-				}
-			}
-
-			if (tempObject.getId() == ID.NukePickup) {
-				if (getBounds().intersects(tempObject.getBounds())) {
-					handler.clearSmartEnemy();
-					handler.removePickup(tempObject);
-
-					}
 				}
 			}
 		}

@@ -29,6 +29,7 @@ public class AttackHUD {
 	private Color scoreColor = Color.white;
 	private int ammo = 300;
 	private int mag = 300;
+
 	
 	public void tick() {
 		health = Game.clamp(health, 0, health);

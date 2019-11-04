@@ -208,7 +208,7 @@ public class Spawn1to5 {
 							-20, ID.EnemyShooter, this.handler));
 					spawnTimer = 40;
 					if (hud.health <= 50){
-						handler.addPickup(new SharkHealth(ID.SharkHealth, handler));
+						handler.addPickup(new IncreaseHealthPickup(ID.IncreaseHealthPickup, handler));
 					} else {
 						handler.addPickup(new DecreaseHealthPickup(ID.DecreaseHealthPickup, handler));
 					}

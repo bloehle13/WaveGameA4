@@ -207,6 +207,8 @@ public class MouseListener extends MouseAdapter {
 						((player.getX() - mx) * (player.getX() - mx)) + ((player.getY() - my) * (player.getY() - my)));
 				bulletX = ((this.bulletSpeed / distance) * diffX);
 				bulletY = ((this.bulletSpeed / distance) * diffY);
+				Thread thread = new Thread(new Sound(), "ShootingNoise");
+				thread.start();
 				
 				player.setBulletX(bulletX);
 				player.setBulletY(bulletY);
@@ -218,7 +220,7 @@ public class MouseListener extends MouseAdapter {
 			int counter = 0;
 			// Waves Button
 			if (mouseOver(mx, my, 190, 270, 720, 50)) {
-				Thread thread = new Thread(new Sound(), "menuSelect");
+				Thread thread = new Thread(new Sound(), "MenuSelectNoise");
 				thread.start();
 				//handler.object.clear();
 				game.gameState = STATE.Game;
@@ -228,7 +230,7 @@ public class MouseListener extends MouseAdapter {
 
 			// Attack Button
 			else if (mouseOver(mx, my, 190, 450, 720, 50)) {
-				Thread thread = new Thread(new Sound(), "menuSelect");
+				Thread thread = new Thread(new Sound(), "MenuSelectNoise");
 				thread.start();
 				handler.object.clear();
 				game.gameState = STATE.Attack;
@@ -238,20 +240,20 @@ public class MouseListener extends MouseAdapter {
 
 			// Help Button
 			else if (mouseOver(mx, my, 190, 550, 220, 80)) {
-				Thread thread = new Thread(new Sound(), "menuSelect");
+				Thread thread = new Thread(new Sound(), "MenuSelectNoise");
 				thread.start();
 				game.gameState = STATE.Help;
 			}
 
 			// Credits
 			else if (mouseOver(mx, my, 440, 550, 220, 80)) {
-				Thread thread = new Thread(new Sound(), "menuSelect");
+				Thread thread = new Thread(new Sound(), "MenuSelectNoise");
 				thread.start();
 				JOptionPane.showMessageDialog(game,
 						"Game made by Brandon Loehle in 2016." 
-								+ "\n\nContributions of debugging and enhancements made by Kyle Horton, Rob Laudadio, Ryan Hanlon, "
-								+ "Eric Kinney and Kevin Maeder for"
-								+ "SER225 fall semester 2017."
+								+ "\n\nContributions of debugging and enhancements made by Jake Galiano, Nikolai Orekhov, Drew Willaims, "
+								+ "and Josh Tickey for "
+								+ "SER 225 in the fall 2019 semester."
 								+ "\n\nThis game has minor bugs. However,"
 								+ " it is 100% playable, enjoy!");
 			}

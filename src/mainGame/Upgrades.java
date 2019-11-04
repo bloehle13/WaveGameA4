@@ -9,6 +9,7 @@ import mainGame.Game.STATE;
  *
  */
 
+
 public class Upgrades {
 
 	private Game game;

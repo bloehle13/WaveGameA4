@@ -8,7 +8,7 @@ package mainGame;
 public enum ID {
 
 	Player,
-	Player2,  
+	Player2(),
 	Trail(),
 	BossEye(),
 	EnemyFast(),
@@ -26,20 +26,16 @@ public enum ID {
 	CircleTrail(),
 	Levels1to5Text(),
 	EnemyBasic(),
-	SharkHealth(),
-	NRABonusLife(),
 	DecreaseHealthPickup(),
 	IncreaseSpeedPickup(),
 	DecreaseSpeedPickup(),
 	SquidBoss(),
 	SealBoss(),
 	CoinPickup(),
-	Vote(),
 	PlayerBullets(),
 	Server(),
 	SmartBoss(),
 	AmmoPickup(),
 	IncreaseHealthPickup(),
-	NukePickup();
 	
 }
