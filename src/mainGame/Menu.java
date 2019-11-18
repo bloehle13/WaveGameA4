@@ -114,6 +114,18 @@ public class Menu {
 		}
 		handler.tick();
 	}
+	
+	public Image getImage(String path) {
+		Image image = null;
+		try {
+			URL imageURL = Game.class.getResource(path);
+			image = Toolkit.getDefaultToolkit().getImage(imageURL);
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+
+		return image;
+	}
 
 	public void render(Graphics g) {
 		g.drawImage(fish, fishPos ,fishPosY , 162, 108, null);
@@ -157,20 +169,6 @@ public class Menu {
 			g.setFont(font2);
 			g.setColor(color1);
 			g.drawString("ATTACK", 490, 365);
-			
-//			// Server Defense Button
-//			g.setColor(color1);
-//			g.drawRect(190, 390, 720, 50); //left margin, top margin, width, height 
-//			g.setFont(font2);
-//			g.setColor(color1);
-//			g.drawString("SERVER DEFENSE", 410, 428);
-//
-//			// Attack Button
-//			g.setColor(color1);
-//			g.drawRect(190, 450, 720, 50);
-//			g.setFont(font2);
-//			g.setColor(color1);
-//			g.drawString("ATTACK", 483, 487);
 
 			// Help Button
 			g.setColor(color1);
