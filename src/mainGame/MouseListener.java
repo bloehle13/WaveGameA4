@@ -219,7 +219,7 @@ public class MouseListener extends MouseAdapter {
 		else if (game.gameState == STATE.Menu) {
 			int counter = 0;
 			// Waves Button
-			if (mouseOver(mx, my, 190, 270, 720, 50)) {
+			if (mouseOver(mx, my,190, 400, 720, 50)) {
 				Thread thread = new Thread(new Sound(), "MenuSelectNoise");
 				thread.start();
 				//handler.object.clear();
@@ -229,7 +229,7 @@ public class MouseListener extends MouseAdapter {
 			}
 
 			// Attack Button
-			else if (mouseOver(mx, my, 190, 330, 720, 50)) {
+			else if (mouseOver(mx, my, 190, 460, 720, 50)) {
 				Thread thread = new Thread(new Sound(), "menuSelect");
 
 				thread.start();
@@ -237,6 +237,20 @@ public class MouseListener extends MouseAdapter {
 				game.gameState = STATE.Attack;
 				handler.addObject(player);
 				attackHUD.setAttack(true);
+			}
+			// Mute Button
+			else if (mouseOver(mx, my,  20, 500, 50,50) ){
+				System.out.println(Menu.Mute);
+				Thread thread = new Thread(new Sound(), "menuSelect");
+				if (Menu.Mute == true) {
+					Sound.clip.start();
+					Menu.Mute = false;
+				} else {
+					Sound.clip.stop();
+					Menu.Mute = true;
+				}
+				
+				
 			}
 
 			// Help Button

@@ -36,6 +36,8 @@ public class Menu {
 	private Image fish;
 	private Image title;
 	private Image shell;
+	private Image sound;
+	private Image mute;
 	private int fishPos;
 	private int fishPosY;
 	private int timer;
@@ -44,12 +46,26 @@ public class Menu {
 	private int colorIndex;
 	private Spawn1to5 spawner;
 	public Image image,image2;
+	public static boolean Mute;
 
+	public Image getImage(String path) {
+		Image image = null;
+		try {
+			URL imageURL = Game.class.getResource(path);
+			image = Toolkit.getDefaultToolkit().getImage(imageURL);
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+
+		return image;
+	}
 	
 	public Menu(Game game, Handler handler, HUD hud, Spawn1to5 spawner) {
-		fish = getImage("images/TrumpImage.png");
-		title = getImage("images/title.png");
+		fish = getImage("images/YellowFish.png");
+		title = getImage("images/WaveGameTitle.png");
 		shell = getImage("images/seashell.png");
+		mute = getImage("images/mute.jpg");
+		sound = getImage("images/volume.jpg");
 		this.game = game;
 		this.handler = handler;
 		this.hud = hud;
@@ -74,7 +90,7 @@ public class Menu {
 	    image = getImage("images/WaveGameTitle.png")
 ;	    //image = new ImageIcon("images/background2.gif").getImage();
 	    
-	    //removed fireworks
+	    //fireworks
 		handler.addObject(new MenuFireworks((r.nextInt(Game.WIDTH) - 25), 500, 50, 50, 0, -2,
 		colorPick.get(r.nextInt(6)), ID.Firework, this.handler));
 	}
@@ -93,6 +109,7 @@ public class Menu {
 	}
 
 	public void tick() {
+		
 		timer--;
 		fishPos = fishPos + 20;
 		if (fishPos >= 1100) {
@@ -117,8 +134,13 @@ public class Menu {
 
 	public void render(Graphics g) {
 		g.drawImage(fish, fishPos ,fishPosY , 162, 108, null);
-		g.drawImage(shell, 100 , 70 , 300, 200, null);
-		g.drawImage(title, 150 , 50 , 776, 265, null);
+		g.drawImage(shell, 150 , 100 , 300, 200, null);
+		g.drawImage(title, 300 , 150 , 523, 67, null);
+		if (Mute == true) {
+			g.drawImage(mute, 20, 500, 50,50, null);		
+		} else {
+			g.drawImage(sound, 20, 500, 50,50, null);
+		}
 		
 		if (game.gameState == STATE.Menu) {
 			
@@ -142,21 +164,21 @@ public class Menu {
 
 			g.setFont(font);
 			g.setColor(color1);
-			g.drawString("GAME MODES", 420, 250);
+			g.drawString("GAME MODES", 420, 350);
 
 			// Waves Button
 			g.setColor(color1);
-			g.drawRect(190, 270, 720, 50);
+			g.drawRect(190, 400, 720, 50);
 			g.setFont(font2);
 			g.setColor(color1);
-			g.drawString("WAVES", 490, 307);
+			g.drawString("WAVES", 490, 437);
 
 			// Attack Button
 			g.setColor(color1);
-			g.drawRect(190, 330, 720, 50);
+			g.drawRect(190, 460, 720, 50);
 			g.setFont(font2);
 			g.setColor(color1);
-			g.drawString("ATTACK", 490, 365);
+			g.drawString("ATTACK", 490, 495);
 			
 //			// Server Defense Button
 //			g.setColor(color1);
@@ -199,9 +221,7 @@ public class Menu {
 			Font font3 = new Font("Roboto", 1, 90);
 			
 			
-			g.setFont(font3);
-			g.setColor(Color.black);
-			g.drawString("HOW TO PLAY", 260, 120);
+		
 
 			g.setFont(font);
 			g.setColor(Color.black);

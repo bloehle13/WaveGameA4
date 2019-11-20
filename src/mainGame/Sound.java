@@ -20,7 +20,7 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
 public class Sound implements Runnable {
-	private Clip clip;
+	public static Clip clip;
 	private File file;
 	private AudioInputStream audioIn;
 
@@ -28,6 +28,7 @@ public class Sound implements Runnable {
 	public void run() {
 
 		// If loops determine which noise to play
+		if (Menu.Mute == false) {
 		if (Thread.currentThread().getName() == "GameMusic") {
 			System.out.println("Background Music Triggered");
 			file = new File("Sound/GameMusic.wav");
@@ -62,7 +63,7 @@ public class Sound implements Runnable {
 			System.out.println("player hit by enemy sound");
 			file = new File("Sound/PlayerDamaged.wav");
 		}
-
+		}
 		// This is where file is read in
 		audioIn = null;
 		try {
