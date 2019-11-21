@@ -85,28 +85,34 @@ public class Spawn1to5 {
 		* Each level works the same way
 		* 
 		* To keep comments on code to a minimum only the first level will be fully commented
-		* FBI ENEMY LEVEL
+		* 
 		*/
+		
+		//DARK BLUE SHOOTING ENEMY
 		else if (levelNumber == 1) {
 			spawnTimer--;
 			levelTimer--;
 			
 			if (tempCounter < 1) {// called only once, but sets the levelTimer to how long we want this level to run for
 				levelTimer = 2000;// 2000 / 60 method calls a second = 33.33 seconds long
+				spawnTimer = 40;
 				tempCounter++;// ensures the method is only called once
 				if(hud.health <= 2000) {
 					handler.addPickup(new IncreaseHealthPickup(ID.IncreaseHealthPickup, handler));
-					spawnTimer = 40;
+					
 				}
 			}
 			
-			if (spawnTimer == 0) {// time to spawn another enemy
+			if (spawnTimer == 40) {
 				handler.addObject(
-
-				new EnemyCombination(r.nextInt(Game.WIDTH), r.nextInt(Game.HEIGHT), -3, -10, ID.EnemyCombination, handler));// add them to the handler, which handles all game objects
-
-				spawnTimer = 100;// reset the spawn timer
+						new EnemyCombination(1500, 900, -3, -10, ID.EnemyCombination, handler));
+	
+			} else if (spawnTimer == 0) {
+				handler.addObject(
+						new EnemyCombination(r.nextInt(Game.WIDTH), r.nextInt(Game.HEIGHT), -3, -10, ID.EnemyCombination, handler));
+				spawnTimer = 100;
 			}
+			 
 			
 			if (levelTimer == 0) {// level is over
 				handler.clearEnemies();// clear the enemies
@@ -180,11 +186,16 @@ public class Spawn1to5 {
 					}
 				}
 
-				if (spawnTimer == 0) {
+				if (spawnTimer == 40) {
 					handler.addObject(
-							new EnemySmart(r.nextInt(Game.WIDTH), r.nextInt(Game.HEIGHT), -3, ID.EnemySmart, handler));
+							new EnemySmart(50,100, -3, ID.EnemySmart, handler));
+		
+				} else if (spawnTimer == 0) {
+					handler.addObject(
+							new EnemySmart(r.nextInt(Game.WIDTH),r.nextInt(Game.HEIGHT), -3, ID.EnemySmart, handler));
 					spawnTimer = 100;
 				}
+				
 				if (levelTimer == 0) {
 					handler.clearEnemies();
 					hud.setLevel(hud.getLevel() + 1);

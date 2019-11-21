@@ -89,12 +89,16 @@ public class Spawn15to20 {
 				tempCounter++;// ensures the method is only called once
 			}
 			
-			if (spawnTimer == 0) {// time to spawn another enemy
+			if (spawnTimer == 40) {
 				handler.addObject(
-				new EnemyCombination(r.nextInt(Game.WIDTH), r.nextInt(Game.HEIGHT), -4, -11, ID.EnemyCombination, handler));// add them to the handler, which handles all game objects
-
-				spawnTimer = 100;// reset the spawn timer
+						new EnemyCombination(1500, 900, -3, -10, ID.EnemyCombination, handler));
+	
+			} else if (spawnTimer == 0) {
+				handler.addObject(
+						new EnemyCombination(r.nextInt(Game.WIDTH), r.nextInt(Game.HEIGHT), -3, -10, ID.EnemyCombination, handler));
+				spawnTimer = 100;
 			}
+			
 			if (levelTimer == 0) {// level is over
 				handler.clearEnemies();// clear the enemies
 				hud.setLevel(hud.getLevel() + 1);// Increment level number on HUD
