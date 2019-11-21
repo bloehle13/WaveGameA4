@@ -131,6 +131,8 @@ public class Menu {
 		}
 		handler.tick();
 	}
+	
+
 
 	public void render(Graphics g) {
 		g.drawImage(fish, fishPos ,fishPosY , 162, 108, null);
@@ -178,6 +180,7 @@ public class Menu {
 			g.drawRect(190, 460, 720, 50);
 			g.setFont(font2);
 			g.setColor(color1);
+
 			g.drawString("ATTACK", 490, 495);
 			
 //			// Server Defense Button
@@ -193,6 +196,9 @@ public class Menu {
 //			g.setFont(font2);
 //			g.setColor(color1);
 //			g.drawString("ATTACK", 483, 487);
+
+	
+
 
 			// Help Button
 			g.setColor(color1);

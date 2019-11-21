@@ -29,44 +29,32 @@ public class EnemyBurst extends GameObject {
 		this.side = side;
 		this.size = size;
 		if (this.side.equals("left")) {
-			handler.object.add(new EnemyBurstWarning(0, 0, 25, Game.HEIGHT, ID.EnemyBurstWarning, handler));
 			setPos();
 			setVel();
+			handler.object.add(new EnemyBurstWarning(this.x + 50, this.y, 200, 200, ID.EnemyBurstWarning, handler));	
 		} else if (this.side.equals("right")) {
-			handler.object
-					.add(new EnemyBurstWarning(Game.WIDTH - 45, 0, 25, Game.HEIGHT, ID.EnemyBurstWarning, handler));
 			setPos();
 			setVel();
-
+			handler.object.add(new EnemyBurstWarning(this.x - 250, this.y, 200, 200, ID.EnemyBurstWarning, handler));
 		} else if (this.side.equals("top")) {
-			handler.object.add(new EnemyBurstWarning(0, 0, Game.WIDTH, 25, ID.EnemyBurstWarning, handler));
 			setPos();
 			setVel();
-
+			handler.object.add(new EnemyBurstWarning(this.x, this.y + 50, 200, 200, ID.EnemyBurstWarning, handler));
 		} else if (this.side.equals("bottom")) {
-			handler.object
-					.add(new EnemyBurstWarning(0, Game.HEIGHT - 85, Game.WIDTH, 25, ID.EnemyBurstWarning, handler));
 			setPos();
 			setVel();
-
+			handler.object.add(new EnemyBurstWarning(this.x, this.y - 250, 200, 200, ID.EnemyBurstWarning, handler));
 		}
 
 	}
 
 	public void tick() {
-
-		// if (this.y <= 0 || this.y >= Game.HEIGHT - 40) velY *= -1;
-		// if (this.x <= 0 || this.x >= Game.WIDTH - 16) velX *= -1;
-
-		handler.addObject(new Trail(x, y, ID.Trail, Color.orange, this.size, this.size, 0.025, this.handler));
-
-		timer--;
-		if (timer <= 0) {
-			this.x += velX;
-			this.y += velY;
-
-		}
-
+			handler.addObject(new Trail(x, y, ID.Trail, Color.orange, this.size, this.size, 0.025, this.handler));
+			timer--;
+			if (timer <= 0) {
+				this.x += velX;
+				this.y += velY;
+			}
 	}
 
 	public void setPos() {

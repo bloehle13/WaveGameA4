@@ -60,7 +60,6 @@ public class Player extends GameObject {
 
 		playerDamaged = getImage("images/PlayerDamaged.png");
 
-//********* CHANGE HERE FOR NEW PLAYER IMAGE
 		
 
 		if (this.id == ID.Player){
@@ -84,7 +83,6 @@ public class Player extends GameObject {
 		}
 		
 		
-	//System.out.println(takingDamage);
 		this.x += velX;
 		this.y += velY;
 		x = Game.clamp(x, 0, Game.WIDTH - 95);
