@@ -1,30 +1,21 @@
 Below will be the known bugs that are still within the game and suggested enhancements to be implemented.
 
 In general:
-- There is still a lot of code and accessories that are not used and should be deleted. (Ex: upgrade abilities, regen, unneeded image folders)
-- The death sound only plays in Waves mode, not all four game modes.
-- The game over screen's font is inconsistent for different game modes.
-- A lot of code is reused, therefore functions should be implemented instead
+- There is still a lot of code and accessories that are not used and should be deleted. (Ex: upgrade abilities, regen, unneeded image folders, pause menu).
+- The death sound only plays in Waves mode, not both game modes.
+- A lot of code is reused, therefore functions should be implemented instead.
 
 In Waves Mode:
-- Boss 2 (Jimmy Kimmel) does not always stay on screen.
-- The NRA logo pick up does not have a sound associated with it.
 - The levels do not consistently load when the game is restarted through the menu.
-
-In Coop Mode:
-- Pickups affect both players, not just the one that hits it.
-- Levels do not restart after someone wins or loses and the players go back to the menu screen to play again.
+- Levels should be set so that they are loaded in the order of their difficulty (easiest to hardest).
+- Boss damage could be reduced because it currently does some high damage to the player.
 
 In Attack Mode:
-- On some laptops, if the player is moving with WSAD and is using a laptop mouse, they will not be able to move and aim their shot at the same time. 
-This has to do with a laptop's preset settings that prevent use of the same side of the keyboard at the same time.  
-It can be turned off through your laptop settings and the issue will be removed. If the player is using
+- On some laptops, if the player is moving with WSAD and is using a laptop mouse, they will not be able to move and aim their shot at the same time. This has to do with a laptop's preset settings that prevent use of the same side of the keyboard at the same time. It can be turned off through your laptop settings and the issue will be removed. If the player is using
 WSAD to move and a mobile mouse to shoot, or the arrow keys to move, the issue is not present. 
-
-In Defense Mode:
-- The algorithm for the enemies following the player or the server needs to be improved.  Even when the enemy is closer to the server it will have a 
-tendency to move with the key inputs of the player (same direction).
-- This game mode also does not have a formal way to win.
+- Ammo does not reset properly when the game loads AND it does not reset properly after reloading the weapon by pressing 'Enter'.
+- There is only one enemy in this game mode.
+- Weapon does no shoot ammo directly at the mouse's coordinates (inaccurate weapon).
 
 Room for Future Improvement (Enhancements)
 - Continue to update the theme or change it to something of your liking
@@ -32,6 +23,9 @@ Room for Future Improvement (Enhancements)
 - Leaderboards feature
 - Pause game feature
 - Continue to build Attack mode
+- Make the window for the game scalable
+- Theme of the game could be changed
+- Implement a leaderboard
+- Make a customizable character
 
-P.S. if you press the spacebar during levels it will skip the level (except the bosses).  This is strictly for development purposes 
-however easter eggs are always fun.  Bosses can be skipped for development purposes by decreasing their set health or level timer.
+P.S.: If you press the spacebar during levels it will skip the level (except the bosses).  This is strictly for development purposes.However, easter eggs are always fun!  Bosses can be skipped for development purposes by decreasing their set health or level timer.
