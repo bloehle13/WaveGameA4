@@ -4,24 +4,25 @@ In general:
 - There is still a lot of code and accessories that are not used and should be deleted. (Ex: upgrade abilities, regen, unneeded image folders, pause menu).
 - The death sound only plays in Waves mode, not both game modes.
 - A lot of code is reused, therefore functions should be implemented instead.
+- The player can pause the game using the escape key but there is no menu to go along with it, the game just freezes. 
 
 In Waves Mode:
 - The levels do not consistently load when the game is restarted through the menu.
 - Levels should be set so that they are loaded in the order of their difficulty (easiest to hardest).
-- Boss damage could be reduced because it currently does some high damage to the player.
+- Boss damage could be reduced because it currently does a very high damage to the player.
 
 In Attack Mode:
 - On some laptops, if the player is moving with WSAD and is using a laptop mouse, they will not be able to move and aim their shot at the same time. This has to do with a laptop's preset settings that prevent use of the same side of the keyboard at the same time. It can be turned off through your laptop settings and the issue will be removed. If the player is using
 WSAD to move and a mobile mouse to shoot, or the arrow keys to move, the issue is not present. 
 - Ammo does not reset properly when the game loads AND it does not reset properly after reloading the weapon by pressing 'Enter'.
 - There is only one enemy in this game mode.
-- Weapon does no shoot ammo directly at the mouse's coordinates (inaccurate weapon).
+- Weapon does not shoot ammo directly at the mouse's coordinates (inaccurate weapon).
 
 Room for Future Improvement (Enhancements)
 - Continue to update the theme or change it to something of your liking
 - Add new sounds, specifically for pickups without sound
 - Leaderboards feature
-- Pause game feature
+- Pause menu feature
 - Continue to build Attack mode
 - Make the window for the game scalable
 - Theme of the game could be changed
