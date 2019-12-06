@@ -32,7 +32,7 @@ public class Game extends Canvas implements Runnable {
 	// height to dynamically adjust
 	static Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 	private static final long serialVersionUID = 1L;
-	public static final int WIDTH = 1100, HEIGHT = 700;
+	public static final int WIDTH = 1920, HEIGHT = 1080;
 	private Thread thread;
 	private boolean running = false;
 	private Handler handler;
@@ -220,7 +220,7 @@ public class Game extends Canvas implements Runnable {
 
 		Color color1 = new Color(0, 133, 180);
 		g.setColor(color1);
-		g.fillRect(0, 0, 1100, 700);
+		g.fillRect(0, 0, 1920, 1800);
 
 		handler.render(g); // ALWAYS RENDER HANDLER, NO MATTER IF MENU OR GAME
 							// SCREEN

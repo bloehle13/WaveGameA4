@@ -33,7 +33,7 @@ public class EnemyBoss extends GameObject {
 		this.health = 1000;//full health is 1000
 	}
 
-	public void tick() {
+	 public void tick() {
 		this.x += velX;
 		this.y += velY;
 
@@ -51,17 +51,12 @@ public class EnemyBoss extends GameObject {
 			spawn = r.nextInt(5);
 			if (spawn == 0) {
 				handler.addObject(
-						new EnemyBossBullet((int) this.x + 48, (int) this.y + 96, ID.EnemyBossBullet, handler));
+						new EnemyBossBullet((int) this.x + 48, (int) this.y, ID.EnemyBossBullet, handler));
 				this.health -= 3;
 			}
 		}
-
-		// if (this.y <= 0 || this.y >= Game.HEIGHT - 40) velY *= -1;
 		if (this.x <= 0 || this.x >= Game.WIDTH - 120)
 			velX *= -1;
-
-		// handler.addObject(new Trail(x, y, ID.Trail, Color.red, 96, 96, 0.025,
-		// this.handler));
 
 	}
 
@@ -81,13 +76,24 @@ public class EnemyBoss extends GameObject {
 		g.setColor(Color.LIGHT_GRAY);
 		g.drawImage(img, (int) this.x, (int) this.y, 120, 120, null);
 
+		
 		// HEALTH BAR
 		g.setColor(Color.GRAY);
-		g.fillRect(Game.WIDTH / 2 - 500, Game.HEIGHT - 150, 1000, 50);
+		g.fillRect(Game.WIDTH / 3 - 250,  700, 1000, 50);
 		g.setColor(Color.RED);
-		g.fillRect(Game.WIDTH / 2 - 500, Game.HEIGHT - 150, this.health, 50);
+		g.fillRect(Game.WIDTH / 3 - 250,  700, this.health, 50);
 		g.setColor(Color.WHITE);
-		g.drawRect(Game.WIDTH / 2 - 500, Game.HEIGHT - 150, 1000, 50);
+		g.drawRect(Game.WIDTH / 3 - 250,  100, 1000, 50);
+
+		
+//	 Health Bar Before
+		//.setColor(Color.GRAY);
+		//g.fillRect(Game.WIDTH / 2 - 500, Game.HEIGHT - 150, 1000, 50);
+		//g.setColor(Color.RED);
+		//g.fillRect(Game.WIDTH / 2 - 500, Game.HEIGHT - 150, this.health, 50);
+		//g.setColor(Color.WHITE);
+		//g.drawRect(Game.WIDTH / 2 - 500, Game.HEIGHT - 150, 1000, 50);
+
 
 	}
 
